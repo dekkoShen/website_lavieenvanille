@@ -6,7 +6,18 @@ Version: 1.0_201502
 */
 
 
-/******************  initial setup  ******************/
+/* FONT size
+---------------------------------------------------------------------
+[ px ]	[ % ]
+12px 	75  %
+14px 	87.5%
+16px 	100 %
+---------------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------
+initial setup
+---------------------------------------------------------------------*/
 * {
 	margin: 0;
 	padding: 0;
@@ -25,7 +36,7 @@ html{
 }
 
 @media only screen and (max-resolution:264dpi), only screen and (-webkit-max-device-pixel-ratio:2) {
-	html { font-size: 75%; }     /* 12px ex: 2048x1536 for 9.7" */
+	html { font-size: 75%; }     /* 12px for 2048x1536 9.7" */
 }
 
 @media only screen and (max-resolution:180dpi), only screen and (-webkit-max-device-pixel-ratio:1.75) {
@@ -33,7 +44,7 @@ html{
 }
 
 @media only screen and (max-resolution:96dpi), only screen and (-webkit-max-device-pixel-ratio:1.5) {
-	html { font-size: 100%; }    /* 16px ex: 1920x1080 for 23" */
+	html { font-size: 100%; }    /* 16px for 1920x1080 23" */
 }
 
 body {
@@ -47,7 +58,10 @@ body {
 ::-moz-selection { background: #009995; text-shadow: none; }     /* style for selected content */
 	 ::selection { background: #009995; text-shadow: none; }
 
-/******************  elements setup  ******************/
+
+/*---------------------------------------------------------------------
+property of elements setup
+---------------------------------------------------------------------*/
 h1 { font-size: 2.25rem; }
 h2 { font-size: 2.00rem; }
 h3 { font-size: 1.75rem; }
@@ -107,7 +121,10 @@ a:target {
 	text-decoration:none;
 }
 
-/******************  header layout  ******************/
+
+/*---------------------------------------------------------------------
+header layout
+---------------------------------------------------------------------*/
 #header {
 	background-color: transparent;
 	text-align:center;
@@ -140,7 +157,10 @@ a:target {
 	vertical-align: top;
 }
 
-/****************  content layout  ****************/
+
+/*---------------------------------------------------------------------
+content layout
+---------------------------------------------------------------------*/
 #content {
 	text-align:center;
 }
@@ -156,7 +176,10 @@ a:target {
 	margin: 1.0rem;
 }
 
-/****************  footer layout  ****************/
+
+/*---------------------------------------------------------------------
+footer layout
+---------------------------------------------------------------------*/
 #footer{
 	font-family: "Amatic SC", Georgia, "Microsoft JhengHei", serif;
 	font-size: 1rem;
@@ -169,7 +192,10 @@ a:target {
 	text-align: center;
 }
 
-/****************  other_block elements  ****************/
+
+/*---------------------------------------------------------------------
+other_block elements
+---------------------------------------------------------------------*/
 .table_holder{
 	display: inline-table;
 	vertical-align: top;
@@ -186,7 +212,9 @@ a:target {
 }
 
 
-/******************  define class  ******************/
+/*---------------------------------------------------------------------
+define class
+---------------------------------------------------------------------*/
 .font_normal { font-style: normal; }
 .font_italic { font-style: italic; }
 .font_bold   { font-weight: 700;   }
