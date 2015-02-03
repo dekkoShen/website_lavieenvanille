@@ -28,7 +28,12 @@ $(document).ready(function(){
 
 	/* content-linking */
 	linkContent( '#link_content_homeCover', "homeCover" );
-	linkContent( '#link_content_lesson', "lesson" );
+	linkContent( '#link_content_news',      "news"      );
+	linkContent( '#link_content_profile',   "profile"   );
+	linkContent( '#link_content_work',      "work"      );
+	linkContent( '#link_content_lesson',    "lesson"    );
+	linkContent( '#link_content_blog',      "blog"      );
+	linkContent( '#link_content_contact',   "contact"   );
 
 
 	/* preload images */
@@ -37,7 +42,7 @@ $(document).ready(function(){
 			$("<img />").attr("src", arguments[i]);
 		};
 	};
-	//preload_content_about
+	//preload_content_lesson
 	$.preloadImages(
         "./images/line.jpg",
         "./images/lesson_20141026.jpg"
