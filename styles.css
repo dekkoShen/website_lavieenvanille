@@ -153,6 +153,7 @@ a:target {
 }
 
 #content .text_holder { 
+	margin: 1.0rem;
 }
 
 /****************  footer layout  ****************/
