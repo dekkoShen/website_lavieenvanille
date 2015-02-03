@@ -1,0 +1,196 @@
+
+/*
+Theme_Name: lavieenvanille
+Author: dekko Shen
+Version: 1.0_201502
+*/
+
+
+/******************  initial setup  ******************/
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+html{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 75%;            /* 12px */
+}
+
+@media only screen and (max-resolution:264dpi), only screen and (-webkit-max-device-pixel-ratio:2) {
+	html { font-size: 75%; }     /* 12px ex: 2048x1536 for 9.7" */
+}
+
+@media only screen and (max-resolution:180dpi), only screen and (-webkit-max-device-pixel-ratio:1.75) {
+	html { font-size: 87.5%; }   /* 14px */
+}
+
+@media only screen and (max-resolution:96dpi), only screen and (-webkit-max-device-pixel-ratio:1.5) {
+	html { font-size: 100%; }    /* 16px ex: 1920x1080 for 23" */
+}
+
+body {
+	font-weight: 400;
+	font-family: Georgia, "Times New Roman", "Microsoft JhengHei", "Noto Sans CJK TC Light", serif;
+	background-color:#f6fcfb; /*f6fcfb f3fbfa F1FAF9*/
+	color: #000000;
+	line-height:1.875rem;
+}
+
+::-moz-selection { background: #009995; text-shadow: none; }     /* style for selected content */
+	 ::selection { background: #009995; text-shadow: none; }
+
+/******************  elements setup  ******************/
+h1 { font-size: 2.25rem; }
+h2 { font-size: 2.00rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.50rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.00rem; }
+
+p { 
+	font-size: 1.00rem;
+	text-align: justify;
+}
+
+ul    { list-style-type:none; }
+li    { font-size: 1.00rem; }
+ul ul { padding-left: 1rem; }  /* for all ul_2 in ul_1 */
+
+table {
+	width: 100%;
+	border-style: none;
+	border-collapse: collapse;
+}
+
+th, td, tr {
+	border-style: none;
+}
+
+a:link {
+	color:#000000; 
+	background-color:transparent; 
+	text-decoration:none
+}
+
+a:visited {
+	color:#000000; 
+	background-color:transparent; 
+	text-decoration:none;
+}
+
+a:hover {
+	color:#70151C;
+	font-weight: bold;
+	background-color:transparent; 
+	cursor:pointer;
+}
+
+a:active {
+	color:#70151C;
+	font-weight: bold;
+	background-color:transparent;
+	cursor:pointer;
+}
+
+a:target {
+	color:#000000; 
+	background-color:transparent; 
+	font-weight: bold; 
+	text-decoration:none;
+}
+
+/******************  header layout  ******************/
+#header {
+	background-color: transparent;
+	text-align:center;
+	margin: 4rem;
+}
+
+#header .title {
+	/*font-weight: bold;*/
+	font-size: 2.75rem;
+	font-family: "Reenie Beanie", Georgia, "Microsoft JhengHei", serif;
+	margin: 1rem;
+}
+
+#header .title a{
+	color:#000000; 
+	font-weight: 400;
+	background-color:transparent; 
+	text-decoration:none;
+}
+
+#header .nav{
+}
+
+#header .nav .navElement{
+	font-family: "Amatic SC", Georgia, "Microsoft JhengHei", serif;
+	font-size: 2.0rem;
+	margin-right: 1.0rem;
+	margin-left: 1.0rem;
+	display: inline-block;
+	vertical-align: top;
+}
+
+/****************  content layout  ****************/
+#content {
+	text-align:center;
+}
+
+#content .img_container { 
+	overflow:auto;
+} 
+
+#content .pic_holder {
+}
+
+#content .text_holder { 
+}
+
+/****************  footer layout  ****************/
+#footer{
+	font-family: "Amatic SC", Georgia, "Microsoft JhengHei", serif;
+	font-size: 1rem;
+	position: absolute;
+	right: 1.5rem;
+	bottom: 0.5rem;
+}
+
+#footer .text_holder { 
+	text-align: center;
+}
+
+/****************  other_block elements  ****************/
+.table_holder{
+	display: inline-table;
+	vertical-align: top;
+}
+
+.table_r{
+	display: table-row;
+	vertical-align: top;
+}
+
+.table_c{
+	display: table-cell;
+	vertical-align: top;
+}
+
+
+/******************  define class  ******************/
+.font_normal { font-style: normal; }
+.font_italic { font-style: italic; }
+.font_bold   { font-weight: 700;   }
+
+.font_ReenieBeanie { font-family:"Reenie Beanie", Georgia, "Microsoft JhengHei", serif; }
+
+.sans_serif { font-family: helvetica, verdana, "Microsoft JhengHei", "Noto Sans CJK TC Light", Sans-serif; }
+.serif      { font-family: Georgia, "Times New Roman", "PMingLiU", serif;  }
