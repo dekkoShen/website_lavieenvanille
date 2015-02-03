@@ -31,7 +31,6 @@ html{
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
 	font-size: 75%;            /* 12px */
 }
 
@@ -123,6 +122,25 @@ a:target {
 
 
 /*---------------------------------------------------------------------
+other_block elements
+---------------------------------------------------------------------*/
+.table_holder{
+	display: inline-table;
+	vertical-align: top;
+}
+
+.table_r{
+	display: table-row;
+	vertical-align: top;
+}
+
+.table_c{
+	display: table-cell;
+	vertical-align: top;
+}
+
+
+/*---------------------------------------------------------------------
 header layout
 ---------------------------------------------------------------------*/
 #header {
@@ -177,13 +195,59 @@ content layout
 }
 
 
+
+#content.content_lesson .titleWrap { 
+	margin-top: 5rem;
+	margin-bottom: 1rem;
+	position: relative;
+	left: -5rem;
+}
+
+#content.content_lesson .titleData { 
+	font-family: "Reenie Beanie", Georgia, "Microsoft JhengHei", serif;
+	font-size: 2rem;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#content.content_lesson .titleText { 
+	font-family: "Microsoft JhengHei", Georgia, serif;
+	font-size: 1.25rem;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#content.content_lesson .table_holder{ 
+	margin-bottom:1rem;
+	position: relative;
+	left: 3rem;
+}
+
+#content.content_lesson .table_c.img{ 
+	padding-top:1rem;
+	padding-right:3rem;
+}
+
+#content.content_lesson .table_c.text{ 
+	text-align:left;
+	min-width:15rem;
+	max-width:35rem;
+}
+
+#content.content_lesson .endLine { 
+	margin-top: 1rem;
+	margin-bottom: 4rem;
+	position: relative;
+	left: -5rem;
+}
+
 /*---------------------------------------------------------------------
 footer layout
 ---------------------------------------------------------------------*/
 #footer{
 	font-family: "Amatic SC", Georgia, "Microsoft JhengHei", serif;
 	font-size: 1rem;
-	position: absolute;
+	position: fixed;
 	right: 1.5rem;
 	bottom: 0.5rem;
 }
@@ -193,23 +257,6 @@ footer layout
 }
 
 
-/*---------------------------------------------------------------------
-other_block elements
----------------------------------------------------------------------*/
-.table_holder{
-	display: inline-table;
-	vertical-align: top;
-}
-
-.table_r{
-	display: table-row;
-	vertical-align: top;
-}
-
-.table_c{
-	display: table-cell;
-	vertical-align: top;
-}
 
 
 /*---------------------------------------------------------------------
