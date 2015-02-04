@@ -186,25 +186,9 @@ content layout
 #content .pic_holder {
 }
 
-#content.content_homeCover p.title { 
-	text-align:center;
-	padding-top: 1rem;
-}
-
-.wrapper {
+#content .wrapper {
 	margin: 0rem auto;
 	overflow: hidden;
-}
-
-#content.content_lesson .wrapper {
-	text-align:center;
-	min-width:43rem;
-}
-
-#content.content_news .wrapper {
-	text-align:center;
-	max-width:45rem;
-	min-width:35rem;
 }
 
 
@@ -273,11 +257,6 @@ content 2column layout
 	left: -7rem;
 }
 
-#content.content_lesson .endLine { 
-	position: relative;
-	left: -4rem;    /* equal to left(.article_2column) + left(.titleWrap) */
-}
-
 #content .article_2column .titleWrap .titleLine { 
 	padding-bottom: 1.25rem;
 }
@@ -308,10 +287,54 @@ content 2column layout
 
 #content .article_2column .table_holder .table_c.text{ 
 	text-align:left;
-	min-width:20rem;
+	min-width:15rem;
 	max-width:33rem;
 }
 
+
+/*---------------------
+depend on which content
+-----------------------*/
+
+#content.content_homeCover p.title { 
+	text-align:center;
+	padding-top: 1rem;
+}
+
+
+#content.content_lesson .wrapper {
+	text-align:center;
+}
+
+#content.content_lesson .endLine { 
+	position: relative;
+	left: -4rem;    /* equal to left(.article_2column) + left(.titleWrap) */
+}
+
+
+#content.content_news .wrapper {
+	text-align:center;
+	max-width:45rem;
+	min-width:35rem;
+}
+
+
+#content.content_blog .wrapper {
+	text-align:center;
+	max-width:45rem;
+	min-width:35rem;
+}
+
+#content.content_blog .article_1column .titleWrap .titleData { 
+	font-family: "Microsoft JhengHei", Georgia, serif;
+	padding-left: 2rem;
+	font-size: 1rem;
+}
+
+#content.content_blog .article_1column .titleWrap .titleText { 
+ 	font-size: 1rem;
+ 	font-weight: normal; 
+}
 
 
 /*---------------------------------------------------------------------
