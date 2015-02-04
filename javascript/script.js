@@ -44,7 +44,7 @@ $(document).ready(function(){
 	};
 	//preload_content_lesson
 	$.preloadImages(
-        "./images/line.jpg",
+        "./images/line.png",
         "./images/lesson_20141026.jpg"
     );
 

@@ -139,6 +139,10 @@ other_block elements
 	vertical-align: top;
 }
 
+.wrapper {
+	margin: 0rem auto;
+	overflow: hidden;
+}
 
 /*---------------------------------------------------------------------
 header layout
@@ -146,7 +150,7 @@ header layout
 #header {
 	background-color: transparent;
 	text-align:center;
-	margin-bottom: 4rem;
+	padding-bottom: 4rem;
 }
 
 #header .title {
@@ -193,6 +197,12 @@ content layout
 }
 
 
+#content.content_lesson .wrapper {
+	text-align:center;
+	min-width:43rem;
+}
+
+
 /*--------------------
 content 1column layout
 ----------------------*/
@@ -206,19 +216,31 @@ content 2column layout
 ----------------------*/
 #content .article_2column { 
 	text-align:center;
-	width: 100%;
+	padding-bottom:5rem;
+	position: relative;
+	left: 3rem;
 }
 
 #content .article_2column .titleWrap { 
-	margin-top: 5rem;
-	margin-bottom: 1rem;
+	text-align:center;
+	padding-bottom: 2rem;
 	position: relative;
-	left: -5rem;
+	left: -7rem;
+}
+
+#content .endLine { 
+	position: relative;
+	left: -4rem;    /* equal to left(.article_2column) + left(.titleWrap) */
+}
+
+#content .article_2column .titleLine { 
+	padding-bottom: 1.25rem;
 }
 
 #content .article_2column .titleData { 
 	font-family: "Reenie Beanie", Georgia, "Microsoft JhengHei", serif;
 	font-size: 2.5rem;
+	padding-right: 0.5rem;
 	display: inline-block;
 	vertical-align: top;
 }
@@ -226,14 +248,12 @@ content 2column layout
 #content .article_2column .titleText { 
 	font-family: "Microsoft JhengHei", Georgia, Sans-serif;
 	font-size: 1.25rem;
+	font-weight: bold; 
 	display: inline-block;
 	vertical-align: top;
 }
 
 #content .article_2column .table_holder{ 
-	margin-bottom:1rem;
-	position: relative;
-	left: 3rem;
 }
 
 #content .article_2column .table_c.img{ 
@@ -247,12 +267,7 @@ content 2column layout
 	max-width:35rem;
 }
 
-#content .article_2column .endLine { 
-	margin-top: 1rem;
-	margin-bottom: 4rem;
-	position: relative;
-	left: -5rem;
-}
+
 
 /*---------------------------------------------------------------------
 footer layout
