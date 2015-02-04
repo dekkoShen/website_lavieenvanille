@@ -187,9 +187,11 @@ content layout
 #content .pic_holder {
 }
 
-#content .text_holder { 
-	margin: 1.0rem;
+#content.content_homeCover p.title { 
+	text-align:center;
+	padding-top: 1rem;
 }
+
 
 /*--------------------
 content 1column layout
@@ -256,14 +258,14 @@ content 2column layout
 footer layout
 ---------------------------------------------------------------------*/
 #footer{
-	font-family: "Amatic SC", Georgia, "Microsoft JhengHei", serif;
-	font-size: 1rem;
-	position: fixed;
-	right: 1.5rem;
-	bottom: 0.5rem;
+	width: 100%;
+	padding: 5rem 0rem 3rem 0rem;
 }
 
-#footer .text_holder { 
+#footer p { 
+	text-align:center;
+	font-family: "Amatic SC", Georgia, "Microsoft JhengHei", serif;
+	font-size: 1rem;
 }
 
 
