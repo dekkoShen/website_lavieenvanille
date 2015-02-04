@@ -139,11 +139,6 @@ other_block elements
 	vertical-align: top;
 }
 
-.wrapper {
-	margin: 0rem auto;
-	overflow: hidden;
-}
-
 /*---------------------------------------------------------------------
 header layout
 ---------------------------------------------------------------------*/
@@ -196,10 +191,20 @@ content layout
 	padding-top: 1rem;
 }
 
+.wrapper {
+	margin: 0rem auto;
+	overflow: hidden;
+}
 
 #content.content_lesson .wrapper {
 	text-align:center;
 	min-width:43rem;
+}
+
+#content.content_news .wrapper {
+	text-align:center;
+	max-width:45rem;
+	min-width:35rem;
 }
 
 
@@ -208,7 +213,47 @@ content 1column layout
 ----------------------*/
 #content .article_1column { 
 	text-align:center;
-	width: 100%;
+	padding-bottom:5rem;
+}
+
+#content .article_1column .titleWrap { 
+	text-align:left;
+	padding-bottom: 2rem;
+}
+
+#content .article_1column .titleWrap .titleLine { 
+	padding-bottom: 1.75rem;
+}
+
+#content .article_1column .titleWrap .titleData { 
+	font-family: "Reenie Beanie", Georgia, "Microsoft JhengHei", serif;
+	font-size: 2.5rem;
+	padding-left:  1rem;
+	padding-right: 0.5rem;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#content .article_1column .titleWrap .titleText { 
+	font-family: "Microsoft JhengHei", Georgia, Sans-serif;
+	font-size: 1.25rem;
+	font-weight: bold; 
+	display: inline-block;
+	vertical-align: top;
+}
+
+#content .article_1column .contentWrap{
+	text-align:left;
+	margin: 0rem auto;
+	max-width:38rem;
+	min-width:30rem;
+}
+
+#content .article_1column .contentWrap p { 
+}
+
+#content .article_1column .contentWrap .pic_holder { 
+	padding: 1rem 0rem;
 }
 
 /*--------------------
@@ -228,16 +273,16 @@ content 2column layout
 	left: -7rem;
 }
 
-#content .endLine { 
+#content.content_lesson .endLine { 
 	position: relative;
 	left: -4rem;    /* equal to left(.article_2column) + left(.titleWrap) */
 }
 
-#content .article_2column .titleLine { 
+#content .article_2column .titleWrap .titleLine { 
 	padding-bottom: 1.25rem;
 }
 
-#content .article_2column .titleData { 
+#content .article_2column .titleWrap .titleData { 
 	font-family: "Reenie Beanie", Georgia, "Microsoft JhengHei", serif;
 	font-size: 2.5rem;
 	padding-right: 0.5rem;
@@ -245,7 +290,7 @@ content 2column layout
 	vertical-align: top;
 }
 
-#content .article_2column .titleText { 
+#content .article_2column .titleWrap .titleText { 
 	font-family: "Microsoft JhengHei", Georgia, Sans-serif;
 	font-size: 1.25rem;
 	font-weight: bold; 
@@ -256,15 +301,15 @@ content 2column layout
 #content .article_2column .table_holder{ 
 }
 
-#content .article_2column .table_c.img{ 
+#content .article_2column .table_holder .table_c.img{ 
 	padding-top:1rem;
 	padding-right:3rem;
 }
 
-#content .article_2column .table_c.text{ 
+#content .article_2column .table_holder .table_c.text{ 
 	text-align:left;
 	min-width:20rem;
-	max-width:35rem;
+	max-width:33rem;
 }
 
 
