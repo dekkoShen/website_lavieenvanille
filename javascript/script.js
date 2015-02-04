@@ -10,6 +10,7 @@ $(document).ready(function(){
 			$(this).children(':first').unwrap();       //'#content' within 'content' ==> need to unwrap
 		}); 
 	});
+	$('#header .nav a').removeClass('active');
 
 	/* setup content-linking function */
 	var linkContent = function( linkID, fileName ){
@@ -20,6 +21,12 @@ $(document).ready(function(){
 					$(this).children(':first').unwrap();
 				});
 				addr = fileName;
+				if ( fileName==="homeCover" ) {
+					$('#header .nav a').removeClass('active');
+				} else{
+					$(linkID).addClass('active');
+					$(linkID).siblings().removeClass('active');	
+				};
 			};
 			//scroll back to origin
 			$('html, body').animate({scrollTop: 0},1);

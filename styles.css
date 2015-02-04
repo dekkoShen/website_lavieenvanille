@@ -113,13 +113,6 @@ a:active {
 	cursor:pointer;
 }
 
-a:target {
-	color:#000000; 
-	background-color:transparent; 
-	font-weight: bold; 
-	text-decoration:none;
-}
-
 
 /*---------------------------------------------------------------------
 other_block elements
@@ -162,11 +155,18 @@ header layout
 	text-decoration:none;
 }
 
+#header .nav a.active{
+	color:#000000; 
+	background-color:transparent; 
+	font-weight: bold; 
+	text-decoration:none;
+}
+
 #header .nav{
 	padding-top: 1rem;
 }
 
-#header .nav .navElement{
+#header .nav a{
 	font-family: "Amatic SC", Georgia, "Microsoft JhengHei", serif;
 	font-size: 2.0rem;
 	margin-right: 1.0rem;
