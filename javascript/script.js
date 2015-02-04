@@ -22,7 +22,7 @@ $(document).ready(function(){
 				addr = fileName;
 			};
 			//scroll back to origin
-			$('html, body').animate({scrollTop: 0},400);
+			$('html, body').animate({scrollTop: 0},1);
 		});
 	};
 
