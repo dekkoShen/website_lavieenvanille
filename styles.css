@@ -48,7 +48,7 @@ html{
 
 body {
 	font-weight: 400;
-	font-family: Georgia, "Times New Roman", "Microsoft JhengHei", "Noto Sans CJK TC Light", serif;
+	font-family: Georgia, "Times New Roman", "Microsoft JhengHei", "Noto Sans CJK TC Light", Sans-serif;
 	background-color:#f6fcfb; /*f6fcfb f3fbfa F1FAF9*/
 	color: #000000;
 	line-height:1.875rem;
@@ -183,10 +183,6 @@ content layout
 	text-align:center;
 }
 
-#content .img_container { 
-	overflow:auto;
-} 
-
 #content .pic_holder {
 }
 
@@ -194,47 +190,61 @@ content layout
 	margin: 1.0rem;
 }
 
+/*--------------------
+content 1column layout
+----------------------*/
+#content .article_1column { 
+	text-align:center;
+	width: 100%;
+}
 
+/*--------------------
+content 2column layout
+----------------------*/
+#content .article_2column { 
+	text-align:center;
+	width: 100%;
+}
 
-#content.content_lesson .titleWrap { 
+#content .article_2column .titleWrap { 
 	margin-top: 5rem;
 	margin-bottom: 1rem;
 	position: relative;
 	left: -5rem;
 }
 
-#content.content_lesson .titleData { 
+#content .article_2column .titleData { 
 	font-family: "Reenie Beanie", Georgia, "Microsoft JhengHei", serif;
 	font-size: 2.5rem;
 	display: inline-block;
 	vertical-align: top;
 }
 
-#content.content_lesson .titleText { 
-	font-family: "Microsoft JhengHei", Georgia, serif;
+#content .article_2column .titleText { 
+	font-family: "Microsoft JhengHei", Georgia, Sans-serif;
 	font-size: 1.25rem;
 	display: inline-block;
 	vertical-align: top;
 }
 
-#content.content_lesson .table_holder{ 
+#content .article_2column .table_holder{ 
 	margin-bottom:1rem;
 	position: relative;
 	left: 3rem;
 }
 
-#content.content_lesson .table_c.img{ 
+#content .article_2column .table_c.img{ 
 	padding-top:1rem;
 	padding-right:3rem;
 }
 
-#content.content_lesson .table_c.text{ 
+#content .article_2column .table_c.text{ 
 	text-align:left;
-	min-width:15rem;
+	min-width:20rem;
 	max-width:35rem;
 }
 
-#content.content_lesson .endLine { 
+#content .article_2column .endLine { 
 	margin-top: 1rem;
 	margin-bottom: 4rem;
 	position: relative;
