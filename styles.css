@@ -146,14 +146,14 @@ header layout
 #header {
 	background-color: transparent;
 	text-align:center;
-	margin: 4rem;
+	margin-bottom: 4rem;
 }
 
 #header .title {
 	/*font-weight: bold;*/
 	font-size: 2.75rem;
 	font-family: "Reenie Beanie", Georgia, "Microsoft JhengHei", serif;
-	margin: 1rem;
+	padding-top: 4rem;
 }
 
 #header .title a{
@@ -164,6 +164,7 @@ header layout
 }
 
 #header .nav{
+	padding-top: 1rem;
 }
 
 #header .nav .navElement{
