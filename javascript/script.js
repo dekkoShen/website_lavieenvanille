@@ -81,6 +81,9 @@ $(document).ready(function(){
 	/* seup function : scroll back to origin */
 	$footerHome.click(function(){
 		$('html, body').animate({scrollTop: 0},400);
+		if ( $(document).scrollTop() < $('#header').height() ) {
+			linkContent( '#link_content_homeCover_footerHome', homeFileName );
+		};
 	});
 
 
