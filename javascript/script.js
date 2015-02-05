@@ -16,11 +16,15 @@ $(document).ready(function(){
 		return "./" + folderName + "/"+ XfileName + ".html" ;
 	};
 
-	/* link to the content html and adds 'active' class, except homepage */
-	var linkContent = function( XlinkID, XfileName ){
+	/* link to the content html, adds 'active' class and pushing the browser history */
+	var linkContent = function( XlinkID, XfileName, XpushHistory ){
 		$('#content').load( filePosition(XfileName), function(){
 			$(this).children(':first').unwrap();       //'#content' within 'content' ==> need to unwrap
 		});
+		if (XpushHistory) {
+			window[XfileName] = { linkID:XlinkID, fileName:XfileName };
+			history.pushState(null, null, "#"+XfileName );
+		};
 		addr = XfileName;
 		if ( XfileName===homeFileName ) {
 			$('#header .nav a').removeClass('active');
@@ -30,12 +34,13 @@ $(document).ready(function(){
 		};
 	};
 
-	/* setup click function for htperlink */
+	/* setup click function for hyperlink */
 	var clickLinkContent = function( XlinkID, XfileName ){
 		$(XlinkID).click(function(){
 			if( addr != XfileName) {
-				linkContent( XlinkID, XfileName );
+				linkContent( XlinkID, XfileName, true );
 			};
+			return false;
 		});
 	};
 
@@ -44,16 +49,27 @@ $(document).ready(function(){
 	setup the click function for nav-hyperlink and homepage
 	---------------------------------------------------------------------*/
 	/* setup the homepage */
-	linkContent( '#link_content_homeCover', homeFileName );
+	linkContent( '#link_content_homeCover', homeFileName, true );
 
 	/* click function for nav-hyperlink */
 	clickLinkContent( '#link_content_homeCover', homeFileName );
-	clickLinkContent( '#link_content_news',      "news"      );
-	clickLinkContent( '#link_content_profile',   "profile"   );
-	clickLinkContent( '#link_content_work',      "work"      );
-	clickLinkContent( '#link_content_lesson',    "lesson"    );
-	clickLinkContent( '#link_content_blog',      "blog"      );
-	clickLinkContent( '#link_content_contact',   "contact"   );
+	clickLinkContent( '#link_content_news',      "news"       );
+	clickLinkContent( '#link_content_profile',   "profile"    );
+	clickLinkContent( '#link_content_work',      "work"       );
+	clickLinkContent( '#link_content_lesson',    "lesson"     );
+	clickLinkContent( '#link_content_blog',      "blog"       );
+	clickLinkContent( '#link_content_contact',   "contact"    );
+
+
+	/*---------------------------------------------------------------------
+	Manipulating the browser history 
+	---------------------------------------------------------------------*/
+	window.addEventListener("popstate", function(){
+		//var tempName = location.pathname.split("/")[1];
+		var tempName = document.URL.slice(document.URL.lastIndexOf("#")+1);
+		linkContent( window[tempName].linkID, window[tempName].fileName, false );
+		return false;
+	});
 
 
 	/*---------------------------------------------------------------------
@@ -82,8 +98,9 @@ $(document).ready(function(){
 	$footerHome.click(function(){
 		$('html, body').animate({scrollTop: 0},400);
 		if ( $(document).scrollTop() < $('#header').height() ) {
-			linkContent( '#link_content_homeCover_footerHome', homeFileName );
+			linkContent( '#link_content_homeCover_footerHome', homeFileName, true );
 		};
+		return false;
 	});
 
 
