@@ -326,14 +326,7 @@ depend on which content
 }
 
 #content.content_blog .article_1column .titleWrap .titleData { 
-	font-family: "Microsoft JhengHei", Georgia, serif;
 	padding-left: 2rem;
-	font-size: 1rem;
-}
-
-#content.content_blog .article_1column .titleWrap .titleText { 
- 	font-size: 1rem;
- 	font-weight: normal; 
 }
 
 
