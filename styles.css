@@ -351,6 +351,17 @@ footer layout
 	font-size: 1rem;
 }
 
+/*---------------------------------------------------------------------
+footer layout
+---------------------------------------------------------------------*/
+#footerHome{
+	position: fixed;
+	bottom: 2rem;
+	right: 3rem;
+	opacity: 0.8;
+	filter: alpha(opacity=8); /* For IE8 and earlier */
+}
+
 
 /*---------------------------------------------------------------------
 define class
