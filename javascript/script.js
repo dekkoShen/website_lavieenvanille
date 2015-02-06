@@ -4,7 +4,7 @@ $(document).ready(function(){
 	define global parameters & input the information of file
 	---------------------------------------------------------------------*/
 	var folderName   = "content";      //fold for content html
-	var homeFileName = "homeCover";    //the file name of homepage html
+	var homeFileName = "home";    //the file name of homepage html
 	var addr         = "";             //actived content name
 
 
@@ -21,16 +21,16 @@ $(document).ready(function(){
 		$('#content').load( filePosition(XfileName), function(){
 			$(this).children(':first').unwrap();       //'#content' within 'content' ==> need to unwrap
 		});
-		if (XpushHistory) {
-			window[XfileName] = { linkID:XlinkID, fileName:XfileName };
-			history.pushState(null, null, "#"+XfileName );
-		};
 		addr = XfileName;
 		if ( XfileName===homeFileName ) {
 			$('#header .nav a').removeClass('active');
 		} else{
 			$(XlinkID).addClass('active');
 			$(XlinkID).siblings().removeClass('active');	
+		};
+		if (XpushHistory) {
+			window[XfileName] = { linkID:XlinkID, fileName:XfileName };
+			history.pushState(null, null, "#"+XfileName );
 		};
 	};
 
@@ -49,10 +49,10 @@ $(document).ready(function(){
 	setup the click function for nav-hyperlink and homepage
 	---------------------------------------------------------------------*/
 	/* setup the homepage */
-	linkContent( '#link_content_homeCover', homeFileName, true );
+	linkContent( '#link_content_home', homeFileName, true );
 
 	/* click function for nav-hyperlink */
-	clickLinkContent( '#link_content_homeCover', homeFileName );
+	clickLinkContent( '#link_content_home', homeFileName );
 	clickLinkContent( '#link_content_news',      "news"       );
 	clickLinkContent( '#link_content_profile',   "profile"    );
 	clickLinkContent( '#link_content_work',      "work"       );
@@ -75,7 +75,7 @@ $(document).ready(function(){
 	/*---------------------------------------------------------------------
 	setup function for #footerHome 
 	---------------------------------------------------------------------*/
-	var $footerHome = $('#link_content_homeCover_footerHome')
+	var $footerHome = $('#link_content_home_footerHome')
 
 	/* scroll down and showup */
 	$footerHome.css('opacity','0.2');
@@ -98,7 +98,7 @@ $(document).ready(function(){
 	$footerHome.click(function(){
 		$('html, body').animate({scrollTop: 0},400);
 		if ( $(document).scrollTop() < $('#header').height() ) {
-			linkContent( '#link_content_homeCover_footerHome', homeFileName, true );
+			linkContent( '#link_content_home_footerHome', homeFileName, true );
 		};
 		return false;
 	});

@@ -296,7 +296,7 @@ content 2column layout
 depend on which content
 -----------------------*/
 
-#content.content_homeCover p.title { 
+#content.content_home p.title { 
 	text-align:center;
 	padding-top: 1rem;
 }
