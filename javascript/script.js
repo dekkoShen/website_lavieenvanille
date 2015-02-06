@@ -3,10 +3,23 @@ $(document).ready(function(){
 	/*---------------------------------------------------------------------
 	define global parameters & input the information of file
 	---------------------------------------------------------------------*/
-	var folderName   = "content";      //fold for content html
-	var homeFileName = "home";    //the file name of homepage html
-	var addr         = "";             //actived content name
+	var folderName  = "content";      //fold for content html
+	var urlPosition = "";             //actived content name, we will use this for url
 
+	var navLinkNumber = 6;            //number of links in the navbar
+	var linkID = [                    //information of link
+	    /*------------------ linkID[0] : homepage --------------------*/
+	    { idName:'#link_content_home',            fileName: "home"    },
+	    /*--------------------------- nav ----------------------------*/
+	    { idName:'#link_content_news',            fileName: "news"    },
+	    { idName:'#link_content_profile',         fileName: "profile" },
+	    { idName:'#link_content_work',            fileName: "work"    },
+	    { idName:'#link_content_lesson',          fileName: "lesson"  },
+	    { idName:'#link_content_blog',            fileName: "blog"    },
+	    { idName:'#link_content_contact',         fileName: "contact" },
+	    /*-------------------------- other ---------------------------*/
+	    { idName:'#link_content_home_footerHome', fileName: "home"    }
+	];
 
 	/*---------------------------------------------------------------------
 	define some functions for hyperlink
@@ -19,25 +32,24 @@ $(document).ready(function(){
 	/* link to the content html, adds 'active' class and pushing the browser history */
 	var linkContent = function( XlinkID, XfileName, XpushHistory ){
 		$('#content').load( filePosition(XfileName), function(){
-			$(this).children(':first').unwrap();       //'#content' within 'content' ==> need to unwrap
+			$(this).children(':first').unwrap();               //'#content' within 'content' ==> need to unwrap
 		});
-		addr = XfileName;
-		if ( XfileName===homeFileName ) {
+		urlPosition = XfileName;
+		if ( XfileName===linkID[0].fileName ) {
 			$('#header .nav a').removeClass('active');
-		} else{
+		} else{                                                //if there are the other type of links, it will be a problem. 
 			$(XlinkID).addClass('active');
 			$(XlinkID).siblings().removeClass('active');	
 		};
 		if (XpushHistory) {
-			window[XfileName] = { linkID:XlinkID, fileName:XfileName };
-			history.pushState(null, null, "#"+XfileName );
+			history.pushState(null, null, "#"+urlPosition );   //the third element define the linking URL
 		};
 	};
 
 	/* setup click function for hyperlink */
 	var clickLinkContent = function( XlinkID, XfileName ){
 		$(XlinkID).click(function(){
-			if( addr != XfileName) {
+			if( urlPosition != XfileName) {
 				linkContent( XlinkID, XfileName, true );
 			};
 			return false;
@@ -46,28 +58,27 @@ $(document).ready(function(){
 
 
 	/*---------------------------------------------------------------------
-	setup the click function for nav-hyperlink and homepage
+	setup the click function for nav-hyperlink and setup initial page
 	---------------------------------------------------------------------*/
-	/* setup the homepage */
-	linkContent( '#link_content_home', homeFileName, true );
+	/* setup the initial page */
+	linkContent( linkID[0].idName, linkID[0].fileName, true );
 
-	/* click function for nav-hyperlink */
-	clickLinkContent( '#link_content_home', homeFileName );
-	clickLinkContent( '#link_content_news',      "news"       );
-	clickLinkContent( '#link_content_profile',   "profile"    );
-	clickLinkContent( '#link_content_work',      "work"       );
-	clickLinkContent( '#link_content_lesson',    "lesson"     );
-	clickLinkContent( '#link_content_blog',      "blog"       );
-	clickLinkContent( '#link_content_contact',   "contact"    );
+	/* click function for navbar-hyperlink */
+	for (var i = 0; i <= navLinkNumber; i++) {
+		clickLinkContent( linkID[i].idName, linkID[i].fileName );
+	};
 
 
 	/*---------------------------------------------------------------------
 	Manipulating the browser history 
 	---------------------------------------------------------------------*/
 	window.addEventListener("popstate", function(){
-		//var tempName = location.pathname.split("/")[1];
-		var tempName = document.URL.slice(document.URL.lastIndexOf("#")+1);
-		linkContent( window[tempName].linkID, window[tempName].fileName, false );
+		for (var i = 0; i <= navLinkNumber; i++) {
+			if ( document.URL.slice(document.URL.lastIndexOf("#")+1) === linkID[i].fileName ) { 
+				linkContent( linkID[i].idName, linkID[i].fileName, false );     //do not push history when user clicks the "backward" or "forward" in browser 
+				break;
+			};
+		};
 		return false;
 	});
 
@@ -75,15 +86,15 @@ $(document).ready(function(){
 	/*---------------------------------------------------------------------
 	setup function for #footerHome 
 	---------------------------------------------------------------------*/
-	var $footerHome = $('#link_content_home_footerHome')
+	var $footerHome = $(linkID[7].idName)
 
 	/* scroll down and showup */
-	$footerHome.css('opacity','0.2');
+	$footerHome.css('opacity','0.35');
 	$(window).scroll(function(){
 		if ( $(document).scrollTop() >= $('#header').height() ) {
 			$footerHome.animate({opacity:0.9},{duration:100,queue:false});
 		} else{
-			$footerHome.animate({opacity:0.2},{duration:100,queue:false});
+			$footerHome.animate({opacity:0.35},{duration:100,queue:false});
 		};
 	});
 
@@ -98,7 +109,7 @@ $(document).ready(function(){
 	$footerHome.click(function(){
 		$('html, body').animate({scrollTop: 0},400);
 		if ( $(document).scrollTop() < $('#header').height() ) {
-			linkContent( '#link_content_home_footerHome', homeFileName, true );
+			linkContent( linkID[7].idName, linkID[7].fileName, true );
 		};
 		return false;
 	});
