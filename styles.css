@@ -338,6 +338,31 @@ depend on which content
 }
 
 
+#content.content_contact .wrapper {
+	text-align:center;
+	width:45rem;
+}
+
+#content.content_contact .table_holder .table_c.img{
+	padding-right: 2.5rem
+}
+
+#content.content_contact .table_holder .table_c.text{ 
+	text-align:left;
+	vertical-align:middle;
+	width:25rem;
+}
+
+#content.content_contact .table_holder .table_c.text p{ 
+	font-family: "Amatic SC", Georgia, "Microsoft JhengHei", serif;
+	font-size: 1.5rem;
+	line-height:3rem;
+}
+
+#content.content_contact .table_holder .table_c.text img{ 
+	vertical-align:middle;
+}
+
 /*---------------------------------------------------------------------
 footer layout
 ---------------------------------------------------------------------*/

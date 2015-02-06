@@ -135,7 +135,10 @@ $(document).ready(function(){
 	/* preload images */
 	$.preloadImages(
         "./images/line.png",
-        "./images/profile.jpg"
+        "./images/profile.jpg",
+        "./images/contact.jpg",
+        "./images/ico_mail.png",
+        "./images/ico_facebook.png"
     );
 
 
