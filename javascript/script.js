@@ -46,7 +46,11 @@ $(document).ready(function(){
 		};
 		/* push the page history */
 		if (XpushHistory) {
-			history.pushState(currentState, null, "#"+XfileName );   //the third element define the linking URL: it must use prefix "#" or "?". Some problem will occur when it doesn't have prefix...
+			if ( XfileName===linkID[0].fileName ) {
+				history.pushState(currentState, null, "/" );             //when it link to the homepage, it doesn't change the URL.
+			} else{
+				history.pushState(currentState, null, "#"+XfileName );   //the third element define the linking URL: it must use prefix "#" or "?". Some problem (browser reload) will occur when it doesn't have prefix...
+			};
 		};
 	};
 
@@ -66,14 +70,19 @@ $(document).ready(function(){
 	---------------------------------------------------------------------*/
 	/* setup the initial page */
 	var checkInitialHome = true;
-	for (var i = 0; i <= navLinkNumber; i++) {
+	for (var i = 1; i <= navLinkNumber; i++) {
 		if ( document.URL.slice(document.URL.lastIndexOf("#")+1) === linkID[i].fileName ) {   //check input URL point to content or not
-			linkContent( linkID[i].idName, linkID[i].fileName, true );
+			linkContent( linkID[i].idName, linkID[i].fileName, false );
+			history.replaceState(currentState, null, "#"+currentState.fileName );             //replaceState for initialized
 			checkInitialHome = false;
 			break;
 		};
 	};
-	if ( checkInitialHome ) linkContent( linkID[0].idName, linkID[0].fileName, true );
+	if ( checkInitialHome ) {
+		linkContent( linkID[0].idName, linkID[0].fileName, false );
+		history.replaceState(currentState, null, "/" );                        //replaceState for initialized
+	};
+
 
 	/* click function for navbar-hyperlink */
 	for (var i = 0; i <= navLinkNumber; i++) {
