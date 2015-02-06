@@ -3,11 +3,11 @@ $(document).ready(function(){
 	/*---------------------------------------------------------------------
 	define global parameters & input the information of file
 	---------------------------------------------------------------------*/
-	var folderName  = "content";      //fold for content html
-	var urlPosition = "";             //actived content name, we will use this for url
+	var folderName   = "content";                   //fold for content html
+	var currentState = { idName:"", fileName:""};   //saved information of current page. fileName will use for URL.
 
-	var navLinkNumber = 6;            //number of links in the navbar
-	var linkID = [                    //information of link
+	var navLinkNumber = 6;                          //number of links in the navbar
+	var linkID = [                                  //information of link
 	    /*------------------ linkID[0] : homepage --------------------*/
 	    { idName:'#link_content_home',            fileName: "home"    },
 	    /*--------------------------- nav ----------------------------*/
@@ -31,25 +31,29 @@ $(document).ready(function(){
 
 	/* link to the content html, adds 'active' class and pushing the browser history */
 	var linkContent = function( XlinkID, XfileName, XpushHistory ){
+		/* record page-information */
+		currentState = { idName:XlinkID, fileName:XfileName};
+		/* load content from external file */
 		$('#content').load( filePosition(XfileName), function(){
 			$(this).children(':first').unwrap();               //'#content' within 'content' ==> need to unwrap
 		});
-		urlPosition = XfileName;
+		/* hightlight the navbar link */
 		if ( XfileName===linkID[0].fileName ) {
 			$('#header .nav a').removeClass('active');
 		} else{                                                //if there are the other type of links, it will be a problem. 
 			$(XlinkID).addClass('active');
 			$(XlinkID).siblings().removeClass('active');	
 		};
+		/* push the page history */
 		if (XpushHistory) {
-			history.pushState(null, null, "#"+urlPosition );   //the third element define the linking URL: it must use prefix "#" or "?". Some problem will occur when it doesn't have prefix...
+			history.pushState(currentState, null, "#"+XfileName );   //the third element define the linking URL: it must use prefix "#" or "?". Some problem will occur when it doesn't have prefix...
 		};
 	};
 
 	/* setup click function for hyperlink */
 	var clickLinkContent = function( XlinkID, XfileName ){
 		$(XlinkID).click(function(){
-			if( urlPosition != XfileName) {
+			if( currentState.fileName != XfileName) {
 				linkContent( XlinkID, XfileName, true );
 			};
 			return false;
@@ -81,12 +85,8 @@ $(document).ready(function(){
 	Manipulating the browser history 
 	---------------------------------------------------------------------*/
 	window.addEventListener("popstate", function(){
-		for (var i = 0; i <= navLinkNumber; i++) {
-			if ( document.URL.slice(document.URL.lastIndexOf("#")+1) === linkID[i].fileName ) { 
-				linkContent( linkID[i].idName, linkID[i].fileName, false );     //do not push history when user clicks the "backward" or "forward" in browser 
-				break;
-			};
-		};
+		currentState = history.state;
+		linkContent( currentState.idName, currentState.fileName, false );     //do not push history when user clicks the "backward" or "forward" in browser 
 		return false;
 	});
 
