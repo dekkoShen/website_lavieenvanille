@@ -61,7 +61,15 @@ $(document).ready(function(){
 	setup the click function for nav-hyperlink and setup initial page
 	---------------------------------------------------------------------*/
 	/* setup the initial page */
-	linkContent( linkID[0].idName, linkID[0].fileName, true );
+	var checkInitialHome = true;
+	for (var i = 0; i <= navLinkNumber; i++) {
+		if ( document.URL.slice(document.URL.lastIndexOf("#")+1) === linkID[i].fileName ) {   //check input URL point to content or not
+			linkContent( linkID[i].idName, linkID[i].fileName, true );
+			checkInitialHome = false;
+			break;
+		};
+	};
+	if ( checkInitialHome ) linkContent( linkID[0].idName, linkID[0].fileName, true );
 
 	/* click function for navbar-hyperlink */
 	for (var i = 0; i <= navLinkNumber; i++) {
