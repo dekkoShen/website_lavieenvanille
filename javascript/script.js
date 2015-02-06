@@ -42,7 +42,7 @@ $(document).ready(function(){
 			$(XlinkID).siblings().removeClass('active');	
 		};
 		if (XpushHistory) {
-			history.pushState(null, null, "#"+urlPosition );   //the third element define the linking URL
+			history.pushState(null, null, "#"+urlPosition );   //the third element define the linking URL: it must use prefix "#" or "?". Some problem will occur when it doesn't have prefix...
 		};
 	};
 
@@ -134,7 +134,8 @@ $(document).ready(function(){
 	};
 	/* preload images */
 	$.preloadImages(
-        "./images/line.png"
+        "./images/line.png",
+        "./images/profile.jpg"
     );
 
 
