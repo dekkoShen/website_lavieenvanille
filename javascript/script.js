@@ -46,7 +46,11 @@ $(document).ready(function(){
 		};
 		/* push the page history */
 		if (XpushHistory) {
-			history.pushState(currentState, null, "#"+XfileName );   //the third element define the linking URL: it must use prefix "#" or "?". Some problem (browser reload) will occur when it doesn't have prefix...
+			if ( XfileName===linkID[0].fileName ) {
+				history.pushState(currentState, null, "./" );             //when it link to the homepage, it doesn't change the URL.
+			} else{
+				history.pushState(currentState, null, "#"+XfileName );   //the third element define the linking URL: it must use prefix "#" or "?". Some problem (browser reload) will occur when it doesn't have prefix...
+			};
 		};
 	};
 
@@ -76,7 +80,7 @@ $(document).ready(function(){
 	};
 	if ( checkInitialHome ) {
 		linkContent( linkID[0].idName, linkID[0].fileName, false );
-		history.replaceState(currentState, null );     //replaceState for initialized (homepage doesn't have prefix word)
+		history.replaceState(currentState, null, "./" );                       //replaceState for initialized
 	};
 
 
