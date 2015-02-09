@@ -366,6 +366,54 @@ depend on which content
 	vertical-align:middle;
 }
 
+
+#content.content_work .wrapper {
+	max-width:66.5rem;
+	min-width:22.5rem;
+}
+
+#content.content_work .entryBox {
+	position:relative;
+	margin: 0rem 1rem 1rem 1rem;
+	display: inline-block;
+	vertical-align: top;
+	opacity: 0.8;
+}
+
+#content.content_work .entryBox:hover {
+	cursor:pointer;
+	opacity: 1;
+}
+
+#content.content_work .entryBox:active {
+	cursor:pointer;
+}
+
+#content.content_work .entryBox img {
+	-webkit-border-radius: 0.5rem;
+	   -moz-border-radius: 0.5rem;
+	        border-radius: 0.5rem;
+}
+
+#content.content_work .entryBox p {
+	position: absolute;
+	top: 0.7rem;
+	left: 0.7rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+#content.content_work .entryBox p.light {
+	color:#f6fcfb;
+	background-color: transparent;
+}
+
+#content.content_work .entryBox p.drak {
+	color:#526042;
+	background-color: transparent;
+}
+
+
 /*---------------------------------------------------------------------
 footer layout
 ---------------------------------------------------------------------*/
