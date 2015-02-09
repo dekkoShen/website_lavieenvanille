@@ -147,7 +147,14 @@ $(document).ready(function(){
         "./images/profile.jpg",
         "./images/contact.jpg",
         "./images/ico_mail.png",
-        "./images/ico_facebook.png"
+        "./images/ico_facebook.png",
+
+        "./images/work/title_macaron.jpg",
+        "./images/work/title_tarte.jpg",
+        "./images/work/title_quiche.jpg",
+        "./images/work/title_cake.jpg",
+        "./images/work/title_soft.jpg",
+        "./images/work/title_jam.jpg"
     );
 
 
