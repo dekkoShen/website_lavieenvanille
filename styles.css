@@ -188,6 +188,7 @@ content layout
 
 #content .wrapper {
 	margin: 0rem auto;
+	text-align:center;
 	overflow: hidden;
 }
 
@@ -296,12 +297,20 @@ content 2column layout
 depend on which content
 -----------------------*/
 
+#content.content_home .wrapper {
+	width:40rem;
+}
+
 #content.content_home p.title { 
 	font-family: "Microsoft JhengHei", Sans-serif;
 	text-align:center;
 	padding-top: 1rem;
 }
 
+
+#content.content_profile .wrapper {
+	width:30rem;
+}
 
 #content.content_profile p.title { 
 	font-family: "Microsoft JhengHei", Sans-serif;
@@ -310,9 +319,6 @@ depend on which content
 	width:28rem;
 }
 
-#content.content_lesson .wrapper {
-	text-align:center;
-}
 
 #content.content_lesson .endLine { 
 	position: relative;
@@ -321,14 +327,12 @@ depend on which content
 
 
 #content.content_news .wrapper {
-	text-align:center;
 	max-width:45rem;
 	min-width:35rem;
 }
 
 
 #content.content_blog .wrapper {
-	text-align:center;
 	max-width:45rem;
 	min-width:35rem;
 }
@@ -339,7 +343,6 @@ depend on which content
 
 
 #content.content_contact .wrapper {
-	text-align:center;
 	width:45rem;
 }
 
