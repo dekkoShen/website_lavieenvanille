@@ -1,40 +1,44 @@
-$(document).ready(function(){
 
-	/*---------------------------------------------------------------------
-	define global parameters & input the information of file
-	---------------------------------------------------------------------*/
-	var folderName   = "content";                   //fold for content html
-	var currentState = { idName:"", fileName:""};   //saved information of current page. fileName will use for URL.
+/*---------------------------------------------------------------------
+define global parameters & input the information of file
+---------------------------------------------------------------------*/
+var filePosition = "./content";                 //fold for content html
+var currentState = { idName:"", fileName:""};   //saved information of current page for pushState. fileName will use for URL.
 
-	var navLinkNumber = 6;                          //number of links in the navbar
-	var linkID = [                                  //information of link
-	    /*------------------ linkID[0] : homepage --------------------*/
-	    { idName:'#link_content_home',            fileName: "home"    },
-	    /*--------------------------- nav ----------------------------*/
-	    { idName:'#link_content_news',            fileName: "news"    },
-	    { idName:'#link_content_profile',         fileName: "profile" },
-	    { idName:'#link_content_work',            fileName: "work"    },
-	    { idName:'#link_content_lesson',          fileName: "lesson"  },
-	    { idName:'#link_content_blog',            fileName: "blog"    },
-	    { idName:'#link_content_contact',         fileName: "contact" },
-	    /*------------------------- footer ---------------------------*/
-	    { idName:'#link_content_home_footerHome', fileName: "home"    }
-	];
+/* input information of links */
+var linkID = [
+    /*--------------------------- nav ----------------------------*/
+    { idName:'#link_content_home',            fileName: "home"    },   // linkID[0] : homepage
+    { idName:'#link_content_news',            fileName: "news"    },
+    { idName:'#link_content_profile',         fileName: "profile" },
+    { idName:'#link_content_work',            fileName: "work"    },
+    { idName:'#link_content_lesson',          fileName: "lesson"  },
+    { idName:'#link_content_blog',            fileName: "blog"    },
+    { idName:'#link_content_contact',         fileName: "contact" },
+    /*------------------------- footer ---------------------------*/
+    { idName:'#link_content_home_footerHome', fileName: "home"    }
+];
 
-	/*---------------------------------------------------------------------
-	define some functions for hyperlink
-	---------------------------------------------------------------------*/
-	/* filePosition */
-	var filePosition = function (XfileName) {
-		return "./" + folderName + "/"+ XfileName + ".html" ;
-	};
+linkID.headNav        = 0;           //head of links in the navbar
+linkID.headFooterHome = 7;           //head of links in the #footerHome
+linkID.headWork       = 8;           //head of links in the .content_work
+
+linkID.numberNav        = 7;         //number of links in the navbar
+linkID.numberFooterHome = 1;         //number of links in the #footerHome
+linkID.numberWork       = 6;         //number of links in the .content_work
+
+
+/*---------------------------------------------------------------------
+define jquery functions for hyperlink
+---------------------------------------------------------------------*/
+(function ( $ ) {
 
 	/* link to the content html, adds 'active' class and pushing the browser history */
-	var linkContent = function( XlinkID, XfileName, XpushHistory ){
+	$.fn.linkContent = function( XlinkID, XfilePosition, XfileName, XpushHistory ) {
 		/* record page-information */
 		currentState = { idName:XlinkID, fileName:XfileName};
 		/* load content from external file */
-		$('#content').load( filePosition(XfileName), function(){
+		$('#content').load( XfilePosition + "/"+ XfileName + ".html", function(){
 			/* '#content' within 'content' ==> need to unwrap */
 			$(this).children(':first').unwrap();
 			/* '#content' fadein effect */
@@ -44,7 +48,7 @@ $(document).ready(function(){
 		/* hightlight the navbar link */
 		if ( XfileName===linkID[0].fileName ) {
 			$('#header .nav a').removeClass('active');
-		} else{                                                //if there are the other type of links, it will be a problem. 
+		} else{                                                //add hightlight the link with .active
 			$(XlinkID).addClass('active');
 			$(XlinkID).siblings().removeClass('active');	
 		};
@@ -56,40 +60,50 @@ $(document).ready(function(){
 				history.pushState(currentState, null, "./#"+XfileName );   //the third element define the linking URL: it must use prefix "#" or "?". Some problem (browser reload) will occur when it doesn't have prefix...
 			};
 		};
+		return this;
 	};
 
 	/* setup click function for hyperlink */
-	var clickLinkContent = function( XlinkID, XfileName ){
+	$.fn.clickLinkContent = function( XlinkID, XfilePosition, XfileName ) {
 		$(XlinkID).click(function(){
 			if( currentState.fileName != XfileName) {
-				linkContent( XlinkID, XfileName, true );
+				$().linkContent( XlinkID, XfilePosition, XfileName, true );
 			};
 			return false;
 		});
+		return this;
 	};
 
+}( jQuery ));
+
+
+
+/*---------------------------------------------------------------------
+initial setup using jquery
+---------------------------------------------------------------------*/
+$(document).ready(function(){
 
 	/*---------------------------------------------------------------------
-	setup the click function for nav-hyperlink and setup initial page
+	setup initial page and the click function for nav-hyperlink
 	---------------------------------------------------------------------*/
 	/* setup the initial page */
 	var checkInitialHome = true;
-	for (var i = 1; i <= navLinkNumber; i++) {
+	for (var i = 0; i < linkID.length; i++) {
 		if ( document.URL.slice(document.URL.lastIndexOf("#")+1) === linkID[i].fileName ) {   //check input URL point to content or not
-			linkContent( linkID[i].idName, linkID[i].fileName, false );
+			$().linkContent( linkID[i].idName, filePosition, linkID[i].fileName, false );
 			history.replaceState(currentState, null, "./#"+currentState.fileName );             //replaceState for initialized
 			checkInitialHome = false;
 			break;
 		};
 	};
 	if ( checkInitialHome ) {
-		linkContent( linkID[0].idName, linkID[0].fileName, false );
+		$().linkContent( linkID[0].idName, filePosition, linkID[0].fileName, false );
 		history.replaceState(currentState, null, "./" );      //replaceState for initialized. when it link to the homepage, it doesn't change the URL.
 	};
 
 	/* click function for navbar-hyperlink */
-	for (var i = 0; i <= navLinkNumber; i++) {
-		clickLinkContent( linkID[i].idName, linkID[i].fileName );
+	for (var i = linkID.headNav; i < linkID.headNav+linkID.numberNav; i++) {
+		$().clickLinkContent( linkID[i].idName, filePosition, linkID[i].fileName );
 	};
 
 
@@ -98,7 +112,7 @@ $(document).ready(function(){
 	---------------------------------------------------------------------*/
 	window.addEventListener("popstate", function(){
 		currentState = history.state;
-		linkContent( currentState.idName, currentState.fileName, false );     //do not push history when user clicks the "backward" or "forward" in browser 
+		$().linkContent( currentState.idName, filePosition, currentState.fileName, false );     //do not push history when user clicks the "backward" or "forward" in browser 
 		return false;
 	});
 
@@ -106,7 +120,7 @@ $(document).ready(function(){
 	/*---------------------------------------------------------------------
 	setup function for #footerHome 
 	---------------------------------------------------------------------*/
-	var $footerHome = $(linkID[7].idName)
+	var $footerHome = $(linkID[linkID.headFooterHome].idName)
 
 	/* scroll down and showup */
 	$footerHome.css('opacity','0.35');
@@ -129,7 +143,7 @@ $(document).ready(function(){
 	$footerHome.click(function(){
 		$('html, body').animate({scrollTop: 0},400);
 		if ( $(document).scrollTop() < $('#header').height() ) {
-			linkContent( linkID[7].idName, linkID[7].fileName, true );
+			$().linkContent( linkID[linkID.headFooterHome].idName, filePosition, linkID[linkID.headFooterHome].fileName, true );
 		};
 		return false;
 	});
