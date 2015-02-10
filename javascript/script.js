@@ -35,7 +35,11 @@ $(document).ready(function(){
 		currentState = { idName:XlinkID, fileName:XfileName};
 		/* load content from external file */
 		$('#content').load( filePosition(XfileName), function(){
-			$(this).children(':first').unwrap();               //'#content' within 'content' ==> need to unwrap
+			/* '#content' within 'content' ==> need to unwrap */
+			$(this).children(':first').unwrap();
+			/* '#content' fadein effect */
+			$('body').find('#content').css('display','none');
+			$('body').find('#content').fadeIn(125);
 		});
 		/* hightlight the navbar link */
 		if ( XfileName===linkID[0].fileName ) {
