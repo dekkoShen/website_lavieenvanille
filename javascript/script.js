@@ -17,7 +17,7 @@ $(document).ready(function(){
 	    { idName:'#link_content_lesson',          fileName: "lesson"  },
 	    { idName:'#link_content_blog',            fileName: "blog"    },
 	    { idName:'#link_content_contact',         fileName: "contact" },
-	    /*-------------------------- other ---------------------------*/
+	    /*------------------------- footer ---------------------------*/
 	    { idName:'#link_content_home_footerHome', fileName: "home"    }
 	];
 
@@ -86,7 +86,6 @@ $(document).ready(function(){
 		linkContent( linkID[0].idName, linkID[0].fileName, false );
 		history.replaceState(currentState, null, "./" );      //replaceState for initialized. when it link to the homepage, it doesn't change the URL.
 	};
-
 
 	/* click function for navbar-hyperlink */
 	for (var i = 0; i <= navLinkNumber; i++) {

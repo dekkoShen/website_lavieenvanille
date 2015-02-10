@@ -114,6 +114,11 @@ a:active {
 	cursor:pointer;
 }
 
+img {
+	-webkit-border-radius: 0.5rem;
+	   -moz-border-radius: 0.5rem;
+	        border-radius: 0.5rem;
+}
 
 /*---------------------------------------------------------------------
 other_block elements
@@ -132,6 +137,8 @@ other_block elements
 	display: table-cell;
 	vertical-align: top;
 }
+
+
 
 /*---------------------------------------------------------------------
 header layout
@@ -368,8 +375,8 @@ depend on which content
 
 
 #content.content_work .wrapper {
-	max-width:66.5rem;
-	min-width:22.5rem;
+	max-width:60.5rem;
+	min-width:20.5rem;
 }
 
 #content.content_work .entryBox {
@@ -381,24 +388,17 @@ depend on which content
 
 #content.content_work .entryBox:hover {
 	cursor:pointer;
-	opacity: 0.8;
 }
 
 #content.content_work .entryBox:active {
 	cursor:pointer;
 }
 
-#content.content_work .entryBox img {
-	-webkit-border-radius: 0.5rem;
-	   -moz-border-radius: 0.5rem;
-	        border-radius: 0.5rem;
-}
-
 #content.content_work .entryBox p {
 	position: absolute;
 	top: 0.7rem;
 	left: 0.7rem;
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	font-weight: bold;
 }
 
