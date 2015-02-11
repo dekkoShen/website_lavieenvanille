@@ -33,7 +33,12 @@
 		</div>
 
 
-		<!-- javascript for cropped image -->
+		<!-- 
+		javascript for
+			1. cropped images
+			2. link to page of index
+			3. hover animation
+		-->
 		<script>
 			/* input numeber of macaron items */
 			var numberMacaronCanvas = 13;
@@ -65,8 +70,39 @@
 				};
 				objArrayMacaron[i].src = './images/work/macaron/macaron_' + i + '.jpg';  //filePosition and fileName
 			};
-		</script>
 
+			/* jquery for link and hover animation */
+			$(document).ready(function(){
+				/* link to index */
+				$().clickLinkContent( '#link_content_work_macaron_last', filePosition, 'work' );
+
+				/* hover animation */
+				$("#content.content_work_category.macaron canvas").hover(function(){
+					$(this).stop;
+					$(this).animate({"border-radius":"2.125rem" },{duration:100,queue:false});
+					return false;
+				}, function(){
+					$(this).animate({"border-radius":"0.5rem"},{duration:100,queue:false});
+					return false;
+				});
+				$("#content.content_work_category.macaron .entryBox.last").hover(function(){
+					$(this).stop;
+					$(this).animate({
+						"border-top-left-radius"   :"2.125rem",
+						"border-bottom-left-radius":"2.125rem" 
+					},{duration:100,queue:false});
+					return false;
+				}, function(){
+					$(this).animate({
+						"border-top-left-radius"   :"0.5rem",
+						"border-bottom-left-radius":"0.5rem" 
+					},{duration:100,queue:false});
+					return false;
+				});
+			});
+
+
+		</script>
 
 	</div>
 </div>
