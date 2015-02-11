@@ -115,6 +115,7 @@ a:active {
 }
 
 img {
+	border: 0rem;
 	-webkit-border-radius: 0.5rem;
 	   -moz-border-radius: 0.5rem;
 	        border-radius: 0.5rem;
@@ -392,6 +393,11 @@ depend on which content
 
 #content.content_work .entryBox:active {
 	cursor:pointer;
+}
+
+#content.content_work .entryBox img {
+	width : 17rem;
+	height: 17rem;
 }
 
 #content.content_work .entryBox p {
