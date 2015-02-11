@@ -1,0 +1,72 @@
+<div id="content" class="content_work_category macaron">
+	<div class="wrapper">
+
+		<!-- title box -->
+		<div class="entryBox first">
+			<div class="textWrap">
+				<p class="title font_color_light">馬卡龍</p>
+				<p class="text font_color_light">
+					馬卡龍禮盒正式開賣!!!<br/>
+					即日起至2013結束以前，替<a href="https://www.facebook.com/lavieenvanille" target="_blank">香草生活粉絲專頁</a>按讚的朋友們均可享85折優惠唷!!宅配單筆滿3000元另可享免運優惠!!!!
+				</p>
+			</div>
+		</div>
+
+		<!-- input items -->
+		<canvas id="macaronCanvas_1" >馬卡龍_1 </canvas>
+		<canvas id="macaronCanvas_2" >馬卡龍_2 </canvas>
+		<canvas id="macaronCanvas_3" >馬卡龍_3 </canvas>
+		<canvas id="macaronCanvas_4" >馬卡龍_4 </canvas>
+		<canvas id="macaronCanvas_5" >馬卡龍_5 </canvas>
+		<canvas id="macaronCanvas_6" >馬卡龍_6 </canvas>
+		<canvas id="macaronCanvas_7" >馬卡龍_7 </canvas>
+		<canvas id="macaronCanvas_8" >馬卡龍_8 </canvas>
+		<canvas id="macaronCanvas_9" >馬卡龍_9 </canvas>
+		<canvas id="macaronCanvas_10">馬卡龍_10</canvas>
+		<canvas id="macaronCanvas_11">馬卡龍_11</canvas>
+		<canvas id="macaronCanvas_12">馬卡龍_12</canvas>
+		<canvas id="macaronCanvas_13">馬卡龍_13</canvas>
+
+		<!-- link to index -->
+		<div id="link_content_work_macaron_last" class="entryBox last">
+			<p class="last font_color_light">回目錄</p>
+		</div>
+
+
+		<!-- javascript for cropped image -->
+		<script>
+			/* input numeber of macaron items */
+			var numberMacaronCanvas = 13;
+
+			/* define CanvasSize equal to the size of last entryBox (unit: px) */
+			var sizeMacaronCanvas = Number();
+			$(document).ready(function(){
+				sizeMacaronCanvas = +$('#content .content_work_category .entryBox.last').css("height").toLocaleLowerCase().replace("px", "");
+			});
+
+			/* declare array of objects for canvas cropping image */
+			var objArrayMacaron = new Array();
+			for (var i = 1; i <= numberMacaronCanvas; i++) objArrayMacaron.push( new Object() );
+
+			/* setup canvas (ref: http://www.html5canvastutorials.com/tutorials/html5-canvas-image-crop) */
+			for (var i = 1; i <= numberMacaronCanvas; i++) {
+				objArrayMacaron[i]        = new Image();
+				objArrayMacaron[i].index  = i;
+				objArrayMacaron[i].onload = function() {
+					var tempCanvas = document.getElementById('macaronCanvas_'+ this.index);
+					    tempCanvas.width  = sizeMacaronCanvas;
+					    tempCanvas.height = sizeMacaronCanvas;
+					/* draw cropped image */
+					var sourceWidth  = this.width/2.5;
+					var sourceHeight = this.height/2.5;
+					var sourceX = -(sourceWidth  - tempCanvas.width)/2;
+					var sourceY = -(sourceHeight - tempCanvas.height)/2;
+					tempCanvas.getContext('2d').drawImage(objArrayMacaron[this.index], sourceX, sourceY, sourceWidth, sourceHeight);
+				};
+				objArrayMacaron[i].src = './images/work/macaron/macaron_' + i + '.jpg';  //filePosition and fileName
+			};
+		</script>
+
+
+	</div>
+</div>

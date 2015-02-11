@@ -114,7 +114,7 @@ a:active {
 	cursor:pointer;
 }
 
-img {
+img, canvas {
 	border: 0rem;
 	-webkit-border-radius: 0.5rem;
 	   -moz-border-radius: 0.5rem;
@@ -316,7 +316,7 @@ depend on which content
 	padding-top: 1rem;
 }
 
-
+/*---------------------*/
 #content.content_profile .wrapper {
 	width:30rem;
 }
@@ -327,19 +327,19 @@ depend on which content
 	width:28rem;
 }
 
-
+/*---------------------*/
 #content.content_lesson .endLine { 
 	position: relative;
 	left: -4rem;    /* equal to left(.article_2column) + left(.titleWrap) */
 }
 
-
+/*---------------------*/
 #content.content_news .wrapper {
 	max-width:45rem;
 	min-width:35rem;
 }
 
-
+/*---------------------*/
 #content.content_blog .wrapper {
 	max-width:45rem;
 	min-width:35rem;
@@ -350,6 +350,7 @@ depend on which content
 }
 
 
+/*---------------------*/
 #content.content_contact .wrapper {
 	width:45rem;
 }
@@ -374,7 +375,7 @@ depend on which content
 	vertical-align:middle;
 }
 
-
+/*---------------------*/
 #content.content_work .wrapper {
 	max-width:60.5rem;
 	min-width:20.5rem;
@@ -408,16 +409,89 @@ depend on which content
 	font-weight: bold;
 }
 
-#content.content_work .entryBox p.light {
-	color:#f6fcfb;
+
+/*-------------------------------------------------*/
+#content.content_work_category .wrapper {
+	max-width: 58.4rem; /*48.7rem 58.4rem*/
+	min-width: 29.3rem;
+}
+
+#content.content_work_category canvas {
+	float: left;
+	margin: 0rem 0.7rem 1.4rem 0.7rem;
+}
+
+#content.content_work_category canvas:hover {
+	cursor:pointer;
+}
+
+#content.content_work_category canvas:active {
+	cursor:pointer;
+}
+
+#content.content_work_category .entryBox {
+	float: left;
+	border: 0rem;
+	margin: 0rem 0.7rem 1.4rem 0.7rem;
+	-webkit-border-radius: 0.5rem;
+	   -moz-border-radius: 0.5rem;
+	        border-radius: 0.5rem;
+}
+
+#content.content_work_category .entryBox.first {
+	width: 18rem;
+	height: 18rem;
+}
+
+#content.content_work_category .entryBox.last {
+	float: left;
+	position:relative;
+	width: 8.3rem;
+	height: 8.3rem;
+}
+
+#content.content_work_category .entryBox.last:hover {
+	cursor:pointer;
+}
+
+#content.content_work_category .entryBox.last:active {
+	cursor:pointer;
+}
+
+#content.content_work_category .entryBox .textWrap {
+	padding: 1.2rem;
+}
+
+
+#content.content_work_category .entryBox p.title {
+	font-size: 1.25rem;
+	font-weight: bold;
+	padding-bottom: 0.5rem;
+}
+
+#content.content_work_category .entryBox p.text {
+	font-size: 1.25rem;
+	font-weight: normal;
+}
+
+#content.content_work_category .entryBox p.last {
+	position: absolute;
+	bottom: 0.7rem;
+	right : 0.8rem;
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+#content.content_work_category .entryBox a {
+	color:#B6FCD5;
 	background-color: transparent;
 }
 
-#content.content_work .entryBox p.drak {
-	color:#526042;
-	background-color: transparent;
-}
 
+#content.content_work_category.macaron .entryBox{
+	background-color: #06B4BD;
+	overflow: auto;
+}
 
 /*---------------------------------------------------------------------
 footer layout
@@ -454,6 +528,16 @@ define class
 
 .font_ReenieBeanie { font-family:"Reenie Beanie", Georgia, "Microsoft JhengHei", serif; }
 .font_AmaticSC { font-family:"Amatic SC", Georgia, "Microsoft JhengHei", serif; }
+
+.font_color_light {
+	color:#f6fcfb;
+	background-color: transparent;
+}
+
+.font_color_drak {
+	color:#526042;
+	background-color: transparent;
+}
 
 .sans_serif { font-family: helvetica, verdana, "Microsoft JhengHei", "Noto Sans CJK TC Light", Sans-serif; }
 .serif      { font-family: Georgia, "Times New Roman", "PMingLiU", serif;  }

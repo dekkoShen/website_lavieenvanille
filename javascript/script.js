@@ -7,16 +7,18 @@ var currentState = { idName:"", fileName:""};   //saved information of current p
 
 /* input information of links */
 var linkID = [
-    /*--------------------------- nav ----------------------------*/
-    { idName:'#link_content_home',            fileName: "home"    },   // linkID[0] : homepage
-    { idName:'#link_content_news',            fileName: "news"    },
-    { idName:'#link_content_profile',         fileName: "profile" },
-    { idName:'#link_content_work',            fileName: "work"    },
-    { idName:'#link_content_lesson',          fileName: "lesson"  },
-    { idName:'#link_content_blog',            fileName: "blog"    },
-    { idName:'#link_content_contact',         fileName: "contact" },
-    /*------------------------- footer ---------------------------*/
-    { idName:'#link_content_home_footerHome', fileName: "home"    }
+    /*----------------------------- nav ------------------------------*/
+    { idName:'#link_content_home',            fileName: "home"        },   // linkID[0] : homepage
+    { idName:'#link_content_news',            fileName: "news"        },
+    { idName:'#link_content_profile',         fileName: "profile"     },
+    { idName:'#link_content_work',            fileName: "work"        },
+    { idName:'#link_content_lesson',          fileName: "lesson"      },
+    { idName:'#link_content_blog',            fileName: "blog"        },
+    { idName:'#link_content_contact',         fileName: "contact"     },
+    /*--------------------------- footer -----------------------------*/
+    { idName:'#link_content_home_footerHome', fileName: "home"        },
+    /*---------------------------- work ------------------------------*/
+    { idName:'#link_content_work_macaron',    fileName: "work_macaron"}
 ];
 
 linkID.headNav        = 0;           //head of links in the navbar
@@ -25,7 +27,7 @@ linkID.headWork       = 8;           //head of links in the .content_work
 
 linkID.numberNav        = 7;         //number of links in the navbar
 linkID.numberFooterHome = 1;         //number of links in the #footerHome
-linkID.numberWork       = 6;         //number of links in the .content_work
+linkID.numberWork       = 1;         //number of links in the .content_work
 
 
 /*---------------------------------------------------------------------
