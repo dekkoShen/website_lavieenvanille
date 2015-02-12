@@ -1,26 +1,5 @@
 <div id="content" class="content_work">
 
-	<script type="text/javascript">
-		$(document).ready(function(){
-
-			/* setup hyperlink for .entryBox */
-			for (var i = linkID.headWork; i < linkID.headWork+linkID.numberWork; i++) {
-				$().clickLinkContent( linkID[i].idName, filePosition, linkID[i].fileName );
-			};
-
-			/* hover effect */
-			$("#content.content_work .entryBox img").hover(function(){
-				$(this).stop;
-				$(this).animate({"border-top-right-radius":"3rem", "border-bottom-right-radius":"3rem" },{duration:100,queue:false});
-				return false;
-			}, function(){
-				$(this).animate({"border-top-right-radius":"0.5rem", "border-bottom-right-radius":"0.5rem"},{duration:100,queue:false});
-				return false;
-			});
-		});
-	</script>
-
-
 	<div class="wrapper">
 		<div id="link_content_work_macaron" class="entryBox">
 			<div class="pic_holder"><img src="./images/work/title_macaron.jpg" alt="馬卡龍"></div>
@@ -47,4 +26,30 @@
 			<p class="font_color_drak">果醬</p>
 		</div>
 	</div>
+
+
+	<!-- 
+	javascript for
+		1. setup hyperlink for .entryBox
+		2. hover animation
+	-->
+	<script type="text/javascript">
+		$(document).ready(function(){
+			/* setup hyperlink for .entryBox */
+			for (var i = linkID.headWork; i < linkID.headWork+linkID.numberWork; i++) {
+				$().clickLinkContent( linkID[i].idName, filePosition, linkID[i].fileName );
+			};
+
+			/* hover animation */
+			$("#content.content_work .entryBox img").hover(function(){
+				$(this).stop;
+				$(this).animate({"border-top-right-radius":"3rem", "border-bottom-right-radius":"3rem" },{duration:100,queue:false});
+				return false;
+			}, function(){
+				$(this).animate({"border-top-right-radius":"0.5rem", "border-bottom-right-radius":"0.5rem"},{duration:100,queue:false});
+				return false;
+			});
+		});
+	</script>
+
 </div>

@@ -162,9 +162,11 @@ $(document).ready(function(){
 	};
 	/* preload images */
 	$.preloadImages(
-        "./images/line.png",
+		"./images/cover.jpg",
         "./images/profile.jpg",
         "./images/contact.jpg",
+        "./images/line.png",
+        "./images/ico_home.png",
         "./images/ico_mail.png",
         "./images/ico_facebook.png",
 
