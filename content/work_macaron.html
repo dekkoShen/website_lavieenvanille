@@ -34,6 +34,23 @@
 	</div>
 
 
+	<!-- lightbox for click items -->
+	<div class="lightboxBackground" >
+	</div>
+	<div class="lightbox">
+		<div class="lightboxWrapper">
+			<img src="./images/work/macaron/macaron_12.jpg" style="width:35rem" alt="馬卡龍">
+			<p>
+				最近剛好都走棒棒糖路線!<br/>
+				這是幫好友精心設計的婚禮小點~<br/>
+				無論口味or配色 自已都很喜歡，<br/>
+				殊不知..放個包包回來...就被拿光光了!! <br/>
+				都還來不及好好拍張照呢!! <br/>
+			</p>
+		</div>
+	</div>
+
+
 	<!-- 
 	javascript for
 		1. cropped images
@@ -77,6 +94,16 @@
 		$(document).ready(function(){
 			/* link to index */
 			$().clickLinkContent( '#link_content_work_macaron_last', filePosition, 'work' );
+
+			/* lightbox switch for each item */
+			for (var i = 1; i <= numberMacaronCanvas; i++) {
+				$('#macaronCanvas_'+i).click(function(){
+					$('.lightboxBackground, .lightbox').fadeIn(150);
+				});
+			};
+			$('.lightboxBackground').click(function(){
+				$('.lightboxBackground, .lightbox').fadeOut(150);
+			});
 
 			/* hover animation */
 			$("#content.content_work_category.macaron canvas").hover(function(){

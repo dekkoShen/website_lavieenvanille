@@ -139,7 +139,36 @@ other_block elements
 	vertical-align: top;
 }
 
+.wrapper {
+	margin: 0rem auto;
+	text-align:center;
+	overflow: hidden;
+}
 
+.lightbox {
+	position:fixed; /* keeps the lightbox window in the current viewport */
+	left: 50%;
+	top:  50%;
+	transform: translate(-50%, -60%);
+	text-align:center;
+	display: none;
+	background-color: #f6fcfb;
+	-webkit-border-radius: 0.5rem;
+	   -moz-border-radius: 0.5rem;
+	        border-radius: 0.5rem;
+}
+
+.lightboxBackground {
+	position:fixed; /* keeps the lightbox window in the current viewport */
+	top:0; 
+	left:0; 
+	width:100%; 
+	height:100%;
+	background:rgba(0,0,0,0.4);
+	/*background:url('./images/overlay_25.png') repeat; */
+	text-align:center;
+	display: none;
+}
 
 /*---------------------------------------------------------------------
 header layout
@@ -193,12 +222,6 @@ content layout
 }
 
 #content .pic_holder {
-}
-
-#content .wrapper {
-	margin: 0rem auto;
-	text-align:center;
-	overflow: hidden;
 }
 
 
@@ -487,11 +510,17 @@ depend on which content
 	background-color: transparent;
 }
 
+#content.content_work_category .lightbox .lightboxWrapper {
+	/*max-height: 100vh;*/
+	padding: 3rem;
+	overflow: auto;
+}
 
 #content.content_work_category.macaron .entryBox{
 	background-color: #06B4BD;
 	overflow: auto;
 }
+
 
 /*---------------------------------------------------------------------
 footer layout

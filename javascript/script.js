@@ -3,7 +3,12 @@
 define global parameters & input the information of file
 ---------------------------------------------------------------------*/
 var filePosition = "./content";                 //fold for content html
-var currentState = { idName:"", fileName:""};   //saved information of current page for pushState. fileName will use for URL.
+var currentState = { fromID:"", fileName:""};   //saved information of current page for pushState. fileName will use for URL.
+
+var fontSizePx = Number();                      //for translate px-rem(unit: px)
+$(document).ready(function(){
+	fontSizePx = +$('html').css("font-size").toLocaleLowerCase().replace("px", "");
+});
 
 /* input information of links */
 var linkID = [
@@ -38,7 +43,7 @@ define jquery functions for hyperlink
 	/* link to the content html, adds 'active' class and pushing the browser history */
 	$.fn.linkContent = function( XlinkID, XfilePosition, XfileName, XpushHistory ) {
 		/* record page-information */
-		currentState = { idName:XlinkID, fileName:XfileName};
+		currentState = { fromID:XlinkID, fileName:XfileName};
 		/* load content from external file */
 		$('#content').load( XfilePosition + "/"+ XfileName + ".html", function(){
 			/* '#content' within 'content' ==> need to unwrap */
@@ -114,7 +119,7 @@ $(document).ready(function(){
 	---------------------------------------------------------------------*/
 	window.addEventListener("popstate", function(){
 		currentState = history.state;
-		$().linkContent( currentState.idName, filePosition, currentState.fileName, false );     //do not push history when user clicks the "backward" or "forward" in browser 
+		$().linkContent( currentState.fromID, filePosition, currentState.fileName, false );     //do not push history when user clicks the "backward" or "forward" in browser 
 		return false;
 	});
 
