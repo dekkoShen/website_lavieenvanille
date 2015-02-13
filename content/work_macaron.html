@@ -27,8 +27,8 @@
 	</div>
 	<div class="lightbox">
 		<div class="lightboxWrapper">
-			<img src="./images/work/macaron/macaron_12.jpg" style="width:35rem" alt="馬卡龍">
-			<img src="./images/ico_cross.png" alt="ico_cross" style="width:2rem" class="ico_cross">
+			<img class="itemImg" alt="馬卡龍">
+			<!--<img class="ico_cross" src="./images/ico_cross.png" style="width:2rem" alt="ico_cross">-->
 			<p>
 				最近剛好都走棒棒糖路線!<br/>
 				這是幫好友精心設計的婚禮小點~<br/>
@@ -47,19 +47,22 @@
 		3. hover animation
 	-->
 	<script>
-		/* insert macaronCanvas items */
-		var numberCanvasMacaron = 13;
-		var ID_canvasMacaron = function(Xindex){
+
+		/* input information */
+		var numberCanvasMacaron = 13;                           //number of items
+		var ID_canvasMacaron = function(Xindex){                //ID for the canvas
 			return "canvas_content_work_macaron_" + Xindex ;
 		};
+
+		/* insert macaronCanvas items */
 		for(var i = 1; i <= numberCanvasMacaron; i++) {
 			$('.insertItemCanvas').append('<canvas id="' + ID_canvasMacaron(i) + '">馬卡龍_'+i+'</canvas>');
 		};
 
 		/* define CanvasSize equal to the size of last entryBox (unit: px) */
-		var sizeMacaronCanvas = Number();
+		var sizeCanvasMacaron = Number();
 		$(document).ready(function(){
-			sizeMacaronCanvas = +$('#content .content_work_category .entryBox.last').css("height").toLocaleLowerCase().replace("px", "");
+			sizeCanvasMacaron = +$('#content .content_work_category .entryBox.last').css("height").toLocaleLowerCase().replace("px", "");
 		});
 
 		/* declare array of objects for canvas cropping image */
@@ -72,8 +75,8 @@
 			objArrayMacaron[i].index  = i;
 			objArrayMacaron[i].onload = function() {
 				var tempCanvas = document.getElementById( ID_canvasMacaron(this.index) );
-				    tempCanvas.width  = sizeMacaronCanvas;
-				    tempCanvas.height = sizeMacaronCanvas;
+				    tempCanvas.width  = sizeCanvasMacaron;
+				    tempCanvas.height = sizeCanvasMacaron;
 				/* draw cropped image */
 				var reduceRatio  = 2.5;
 				var sourceWidth  = this.width  / reduceRatio;
@@ -85,6 +88,7 @@
 			objArrayMacaron[i].src = './images/work/macaron/macaron_' + i + '.jpg';  //filePosition and fileName
 		};
 
+
 		/* jquery for links and hover animation */
 		$(document).ready(function(){
 			/* link to index */
@@ -93,9 +97,20 @@
 			/* lightbox switch for each item */
 			for (var i = 1; i <= numberCanvasMacaron; i++) {
 				$( '#' + ID_canvasMacaron(i) ).click(function(){
+					/* insert images for lightbox */
+					var tempFileName = this.id.replace("canvas_content_work_", "");
+					var $tempIdImg   = $('.lightbox .lightboxWrapper img.itemImg');
+					$tempIdImg[0].src="./images/work/macaron/" + tempFileName + ".jpg";
+					if ( $tempIdImg.width() > $tempIdImg.height() ) {
+						$tempIdImg.width('35rem');
+					} else{
+						$tempIdImg.height('30rem');
+					};
+					/* lightbox turnOn */
 					$('.lightboxBackground, .lightbox').fadeIn(150);
 				});
 			};
+			/* lightbox turnOff */
 			$('.lightboxBackground').click(function(){
 				$('.lightboxBackground, .lightbox').fadeOut(150);
 			});
