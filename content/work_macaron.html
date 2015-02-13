@@ -12,20 +12,8 @@
 			</div>
 		</div>
 
-		<!-- input items -->
-		<canvas id="macaronCanvas_1" >馬卡龍_1 </canvas>
-		<canvas id="macaronCanvas_2" >馬卡龍_2 </canvas>
-		<canvas id="macaronCanvas_3" >馬卡龍_3 </canvas>
-		<canvas id="macaronCanvas_4" >馬卡龍_4 </canvas>
-		<canvas id="macaronCanvas_5" >馬卡龍_5 </canvas>
-		<canvas id="macaronCanvas_6" >馬卡龍_6 </canvas>
-		<canvas id="macaronCanvas_7" >馬卡龍_7 </canvas>
-		<canvas id="macaronCanvas_8" >馬卡龍_8 </canvas>
-		<canvas id="macaronCanvas_9" >馬卡龍_9 </canvas>
-		<canvas id="macaronCanvas_10">馬卡龍_10</canvas>
-		<canvas id="macaronCanvas_11">馬卡龍_11</canvas>
-		<canvas id="macaronCanvas_12">馬卡龍_12</canvas>
-		<canvas id="macaronCanvas_13">馬卡龍_13</canvas>
+		<!-- insert canvas items(javascript) -->
+		<div class="insertItemCanvas"></div>
 
 		<!-- link to index -->
 		<div id="link_content_work_macaron_last" class="entryBox last">
@@ -40,6 +28,7 @@
 	<div class="lightbox">
 		<div class="lightboxWrapper">
 			<img src="./images/work/macaron/macaron_12.jpg" style="width:35rem" alt="馬卡龍">
+			<img src="./images/ico_cross.png" alt="ico_cross" style="width:2rem" class="ico_cross">
 			<p>
 				最近剛好都走棒棒糖路線!<br/>
 				這是幫好友精心設計的婚禮小點~<br/>
@@ -58,8 +47,14 @@
 		3. hover animation
 	-->
 	<script>
-		/* input numeber of macaron items */
-		var numberMacaronCanvas = 13;
+		/* insert macaronCanvas items */
+		var numberCanvasMacaron = 13;
+		var ID_canvasMacaron = function(Xindex){
+			return "canvas_content_work_macaron_" + Xindex ;
+		};
+		for(var i = 1; i <= numberCanvasMacaron; i++) {
+			$('.insertItemCanvas').append('<canvas id="' + ID_canvasMacaron(i) + '">馬卡龍_'+i+'</canvas>');
+		};
 
 		/* define CanvasSize equal to the size of last entryBox (unit: px) */
 		var sizeMacaronCanvas = Number();
@@ -69,14 +64,14 @@
 
 		/* declare array of objects for canvas cropping image */
 		var objArrayMacaron = new Array();
-		for (var i = 1; i <= numberMacaronCanvas; i++) objArrayMacaron.push( new Object() );
+		for (var i = 1; i <= numberCanvasMacaron; i++) objArrayMacaron.push( new Object() );
 
 		/* setup canvas (ref: http://www.html5canvastutorials.com/tutorials/html5-canvas-image-crop) */
-		for (var i = 1; i <= numberMacaronCanvas; i++) {
+		for (var i = 1; i <= numberCanvasMacaron; i++) {
 			objArrayMacaron[i]        = new Image();
 			objArrayMacaron[i].index  = i;
 			objArrayMacaron[i].onload = function() {
-				var tempCanvas = document.getElementById('macaronCanvas_'+ this.index);
+				var tempCanvas = document.getElementById( ID_canvasMacaron(this.index) );
 				    tempCanvas.width  = sizeMacaronCanvas;
 				    tempCanvas.height = sizeMacaronCanvas;
 				/* draw cropped image */
@@ -90,14 +85,14 @@
 			objArrayMacaron[i].src = './images/work/macaron/macaron_' + i + '.jpg';  //filePosition and fileName
 		};
 
-		/* jquery for link and hover animation */
+		/* jquery for links and hover animation */
 		$(document).ready(function(){
 			/* link to index */
 			$().clickLinkContent( '#link_content_work_macaron_last', filePosition, 'work' );
 
 			/* lightbox switch for each item */
-			for (var i = 1; i <= numberMacaronCanvas; i++) {
-				$('#macaronCanvas_'+i).click(function(){
+			for (var i = 1; i <= numberCanvasMacaron; i++) {
+				$( '#' + ID_canvasMacaron(i) ).click(function(){
 					$('.lightboxBackground, .lightbox').fadeIn(150);
 				});
 			};

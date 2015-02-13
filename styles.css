@@ -516,6 +516,14 @@ depend on which content
 	overflow: auto;
 }
 
+#content.content_work_category .lightbox img.ico_cross {
+	position: absolute;
+	top: 0rem;
+	right: 0rem;
+	margin-top: -1rem;
+	margin-right: -1rem;
+}
+
 #content.content_work_category.macaron .entryBox{
 	background-color: #06B4BD;
 	overflow: auto;
