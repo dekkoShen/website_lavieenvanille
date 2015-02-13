@@ -2,7 +2,7 @@
 /*---------------------------------------------------------------------
 define global parameters & input the information of file
 ---------------------------------------------------------------------*/
-var filePosition = "./content";                 //fold for content html
+var filePosition = "./content/";                 //fold for content html
 var currentState = { fromID:"", fileName:""};   //saved information of current page for pushState. fileName will use for URL.
 
 var fontSizePx = Number();                      //for translate px-rem(unit: px)
@@ -45,7 +45,7 @@ define jquery functions for hyperlink
 		/* record page-information */
 		currentState = { fromID:XlinkID, fileName:XfileName};
 		/* load content from external file */
-		$('#content').load( XfilePosition + "/"+ XfileName + ".html", function(){
+		$('#content').load( XfilePosition + XfileName + ".html", function(){
 			/* '#content' within 'content' ==> need to unwrap */
 			$(this).children(':first').unwrap();
 			/* '#content' fadein effect */

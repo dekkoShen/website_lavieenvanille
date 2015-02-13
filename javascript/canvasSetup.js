@@ -37,7 +37,7 @@ $(document).ready(function(){
 			var sourceY = -(sourceHeight - tempCanvas.height)/2;
 			tempCanvas.getContext('2d').drawImage(objArrayCanvas[this.index], sourceX, sourceY, sourceWidth, sourceHeight);
 		};
-		objArrayCanvas[i].src = itemImagePosition + itemNamePrefix + i + '.jpg';  //filePosition and fileName
+		objArrayCanvas[i].src = itemPosition + itemNamePrefix + i + '.jpg';  //filePosition and fileName
 	};
 
 
@@ -46,10 +46,11 @@ $(document).ready(function(){
 	-----------------------------*/
 	for (var i = 1; i <= numberCanvas; i++) {
 		$( '#' + IDcanvas(i) ).click(function(){
-			/* insert images for lightbox */
+
+			/* insert image for lightbox */
 			var $imgID      = $('.lightbox .lightboxWrapper img.itemImg');   // DOMid for jquery
 			var imgFileName = itemNamePrefix + this.id.slice( this.id.lastIndexOf("_")+1, this.id.length );
-			$imgID[0].src= itemImagePosition + imgFileName + ".jpg";         // input file position
+			$imgID[0].src= itemPosition + imgFileName + ".jpg";         // input file position
 
 			/* dynamically change image size */
 			var imgWidth    = Number();                       // image width  for lightbox
@@ -63,6 +64,17 @@ $(document).ready(function(){
 			};
 			$imgID.height( imgHeight );
 			$imgID.width(  imgWidth  );
+
+			/* insert text for lightbox */
+			var responseLoad = String();    //loading content(useless)
+			var statusLoad   = String();    //output .load success or not
+			$('.lightbox .lightboxWrapper .itemText').load( itemPosition + imgFileName + ".html", function( responseLoad, statusLoad){
+				if ( statusLoad === "success" ) {
+					$(this).children(':first').unwrap();   // div within div: need to unwrap
+				} else{
+					$('.lightbox .lightboxWrapper .itemText')[0].innerHTML = "";    // if loading is error, there would be empty.
+				};
+			});
 
 			/* lightbox turnOn */
 			$('.lightboxBackground, .lightbox').fadeIn(150);
