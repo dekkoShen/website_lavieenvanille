@@ -56,21 +56,6 @@ $(document).ready(function(){
 			var imgFileName  = itemNamePrefix + this.id.slice( this.id.lastIndexOf("_")+1, this.id.length );
 			$DOMimg[0].src= itemPosition + imgFileName + ".jpg";         // input file position
 
-			/* insert item description for lightbox and change css-style for .itemtext */
-			var responseLoad = String();    //loading content(useless here)
-			var statusLoad   = String();    // .load success or not
-			$DOMtext.load( itemPosition + imgFileName + ".html", function( responseLoad, statusLoad){
-				if ( statusLoad === "success" ) {
-					if ( $DOMimg[0].width > $DOMimg[0].height ) {
-						$(this).children(':first').unwrap().removeClass('twoColumn').addClass('oneColumn');  // div within div: need to unwrap
-					} else{
-						$(this).children(':first').unwrap().removeClass('oneColumn').addClass('twoColumn');
-					};
-				} else{
-					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.
-				};
-			});
-
 			/* dynamically change image size and css-style */
 			var imgWidth    = Number();                       // image width  for lightbox
 			var imgHeight   = Number();                       // image height for lightbox
@@ -87,6 +72,21 @@ $(document).ready(function(){
 			};
 			$DOMimg.height( imgHeight );
 			$DOMimg.width(  imgWidth  );
+
+			/* insert item description for lightbox and change css-style for .itemtext */
+			var responseLoad = String();    //loading content(useless here)
+			var statusLoad   = String();    // .load success or not
+			$DOMtext.load( itemPosition + imgFileName + ".html", function( responseLoad, statusLoad){
+				if ( statusLoad === "success" ) {
+					if ( $DOMimg[0].width > $DOMimg[0].height ) {
+						$(this).children(':first').unwrap().removeClass('twoColumn').addClass('oneColumn');  // div within div: need to unwrap
+					} else{
+						$(this).children(':first').unwrap().removeClass('oneColumn').addClass('twoColumn');
+					};
+				} else{
+					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.
+				};
+			});
 
 			/* lightbox turnOn */
 			$('.lightboxBackground, .lightbox').fadeIn(150);
