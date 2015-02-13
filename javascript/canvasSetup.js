@@ -62,13 +62,13 @@ $(document).ready(function(){
 			if ( $DOMimg[0].width > $DOMimg[0].height ) {
 				imgWidth  = 35 * fontSizePx;                                    //define image size for .oneClolumn style
 				imgHeight = imgWidth / $DOMimg[0].width * $DOMimg[0].height;
-				$DOMimg.removeClass('twoColumn').addClass('oneColumn');
-				$DOMwrapper.removeClass('twoColumn').addClass('oneColumn');
+				$DOMimg.removeClass('twoColumn');
+				$DOMwrapper.removeClass('twoColumn');
 			} else{
 				imgHeight = 30 * fontSizePx;                                    //define image size for .twoClolumn style
 				imgWidth  = imgHeight / $DOMimg[0].height * $DOMimg[0].width;
-				$DOMimg.removeClass('oneColumn').addClass('twoColumn');
-				$DOMwrapper.removeClass('oneColumn').addClass('twoColumn');
+				$DOMimg.addClass('twoColumn');
+				$DOMwrapper.addClass('twoColumn');
 			};
 			$DOMimg.height( imgHeight );
 			$DOMimg.width(  imgWidth  );
@@ -79,9 +79,9 @@ $(document).ready(function(){
 			$DOMtext.load( itemPosition + imgFileName + ".html", function( responseLoad, statusLoad){
 				if ( statusLoad === "success" ) {
 					if ( $DOMimg[0].width > $DOMimg[0].height ) {
-						$(this).children(':first').unwrap().removeClass('twoColumn').addClass('oneColumn');  // div within div: need to unwrap
+						$(this).children(':first').unwrap().removeClass('twoColumn');  // div within div: need to unwrap
 					} else{
-						$(this).children(':first').unwrap().removeClass('oneColumn').addClass('twoColumn');
+						$(this).children(':first').unwrap().addClass('twoColumn');
 					};
 				} else{
 					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.

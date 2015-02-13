@@ -526,41 +526,43 @@ depend on which content
 }
 
 
-#content.content_work_category .lightbox .lightboxWrapper.oneColumn {
+#content.content_work_category .lightbox .lightboxWrapper {
 	min-width: 30rem;
 	padding: 4rem 5rem;
 	width:100%;
 }
 
-#content.content_work_category .lightbox .lightboxWrapper img.itemImg.oneColumn {
-	display: block;
-	margin-bottom: 1.5rem;
-}
-
-#content.content_work_category .lightbox .lightboxWrapper div.itemText.oneColumn {
-	display: block;
-	padding-left: 1rem;
-	max-height: 15rem;
-	overflow: auto;
-}
-
 #content.content_work_category .lightbox .lightboxWrapper.twoColumn {
 	min-width: 54rem;
 	padding: 3rem;
-	width:100%;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper img.itemImg {
+	display: block;
+	margin: 0rem 0rem 1.5rem 0rem;
 }
 
 #content.content_work_category .lightbox .lightboxWrapper img.itemImg.twoColumn {
 	display: inline-block;
-	vertical-align: middle;
 	margin: 2rem;
+	/*-------------------*/
+	vertical-align: middle;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper div.itemText {
+	display: block;
+	padding: 0rem 0rem 0rem 1rem;
+	max-height: 15rem;
+	overflow: auto;
 }
 
 #content.content_work_category .lightbox .lightboxWrapper div.itemText.twoColumn {
 	display: inline-block;
+	padding: 0rem;
+	max-height: 35rem;
+	/*-------------------*/
+	margin: 2.5rem 0rem;
 	vertical-align: middle;
-	max-height: 40rem;
-	overflow: auto;
 }
 
 #content.content_work_category .lightbox .lightboxWrapper p {
