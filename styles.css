@@ -150,7 +150,9 @@ other_block elements
 	left: 50%;
 	top:  50%;
 	-webkit-transform: translate(-50%, -60%);
+	   -moz-transform: translate(-50%, -60%);
 	    -ms-transform: translate(-50%, -60%);
+	     -o-transform: translate(-50%, -60%);
 	        transform: translate(-50%, -60%);
 	text-align:center;
 	display: none;
