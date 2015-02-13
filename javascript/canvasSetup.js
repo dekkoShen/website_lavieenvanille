@@ -47,34 +47,46 @@ $(document).ready(function(){
 	for (var i = 1; i <= numberCanvas; i++) {
 		$( '#' + IDcanvas(i) ).click(function(){
 
+			/* DOM targets for jquery */
+			var $DOMwrapper  = $('.lightbox .lightboxWrapper');
+			var $DOMimg      = $('.lightbox .lightboxWrapper img.itemImg');
+			var $DOMtext     = $('.lightbox .lightboxWrapper div.itemText');
+
 			/* insert image for lightbox */
-			var $imgID      = $('.lightbox .lightboxWrapper img.itemImg');   // DOMid for jquery
-			var imgFileName = itemNamePrefix + this.id.slice( this.id.lastIndexOf("_")+1, this.id.length );
-			$imgID[0].src= itemPosition + imgFileName + ".jpg";         // input file position
+			var imgFileName  = itemNamePrefix + this.id.slice( this.id.lastIndexOf("_")+1, this.id.length );
+			$DOMimg[0].src= itemPosition + imgFileName + ".jpg";         // input file position
 
-			/* dynamically change image size */
-			var imgWidth    = Number();                       // image width  for lightbox
-			var imgHeight   = Number();                       // image height for lightbox
-			if ( $imgID[0].width > $imgID[0].height ) {
-				imgWidth  = 35 * fontSizePx;
-				imgHeight = imgWidth / $imgID[0].width * $imgID[0].height;
-			} else{
-				imgHeight = 30 * fontSizePx;
-				imgWidth  = imgHeight / $imgID[0].height * $imgID[0].width;
-			};
-			$imgID.height( imgHeight );
-			$imgID.width(  imgWidth  );
-
-			/* insert text for lightbox */
-			var responseLoad = String();    //loading content(useless)
-			var statusLoad   = String();    //output .load success or not
-			$('.lightbox .lightboxWrapper .itemText').load( itemPosition + imgFileName + ".html", function( responseLoad, statusLoad){
+			/* insert item description for lightbox and change css-style for .itemtext */
+			var responseLoad = String();    //loading content(useless here)
+			var statusLoad   = String();    // .load success or not
+			$DOMtext.load( itemPosition + imgFileName + ".html", function( responseLoad, statusLoad){
 				if ( statusLoad === "success" ) {
-					$(this).children(':first').unwrap();   // div within div: need to unwrap
+					if ( $DOMimg[0].width > $DOMimg[0].height ) {
+						$(this).children(':first').unwrap().removeClass('twoColumn').addClass('oneColumn');  // div within div: need to unwrap
+					} else{
+						$(this).children(':first').unwrap().removeClass('oneColumn').addClass('twoColumn');
+					};
 				} else{
-					$('.lightbox .lightboxWrapper .itemText')[0].innerHTML = "";    // if loading is error, there would be empty.
+					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.
 				};
 			});
+
+			/* dynamically change image size and css-style */
+			var imgWidth    = Number();                       // image width  for lightbox
+			var imgHeight   = Number();                       // image height for lightbox
+			if ( $DOMimg[0].width > $DOMimg[0].height ) {
+				imgWidth  = 35 * fontSizePx;                                    //define image size for .oneClolumn style
+				imgHeight = imgWidth / $DOMimg[0].width * $DOMimg[0].height;
+				$DOMimg.removeClass('twoColumn').addClass('oneColumn');
+				$DOMwrapper.removeClass('twoColumn').addClass('oneColumn');
+			} else{
+				imgHeight = 30 * fontSizePx;                                    //define image size for .twoClolumn style
+				imgWidth  = imgHeight / $DOMimg[0].height * $DOMimg[0].width;
+				$DOMimg.removeClass('oneColumn').addClass('twoColumn');
+				$DOMwrapper.removeClass('oneColumn').addClass('twoColumn');
+			};
+			$DOMimg.height( imgHeight );
+			$DOMimg.width(  imgWidth  );
 
 			/* lightbox turnOn */
 			$('.lightboxBackground, .lightbox').fadeIn(150);
