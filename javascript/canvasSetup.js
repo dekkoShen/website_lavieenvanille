@@ -79,9 +79,13 @@ $(document).ready(function(){
 			$DOMtext.load( itemPosition + imgFileName + ".html", function( responseLoad, statusLoad){
 				if ( statusLoad === "success" ) {
 					if ( $DOMimg[0].width > $DOMimg[0].height ) {
+						$('.lightbox .lightboxWrapper').css("display","none");
 						$(this).children(':first').unwrap().removeClass('twoColumn');  // div within div: need to unwrap
+						$('.lightbox .lightboxWrapper').fadeIn(100);
 					} else{
+						$('.lightbox .lightboxWrapper').css("display","none");
 						$(this).children(':first').unwrap().addClass('twoColumn');
+						$('.lightbox .lightboxWrapper').fadeIn(100);
 					};
 				} else{
 					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.
