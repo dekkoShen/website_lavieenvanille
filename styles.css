@@ -149,11 +149,11 @@ other_block elements
 	position:fixed; /* keeps the lightbox window in the current viewport */
 	left: 50%;
 	top:  50%;
-	-webkit-transform: translate(-50%, -60%);
-	   -moz-transform: translate(-50%, -60%);
-	    -ms-transform: translate(-50%, -60%);
-	     -o-transform: translate(-50%, -60%);
-	        transform: translate(-50%, -60%);
+	-webkit-transform: translate(-50%, -55%);
+	   -moz-transform: translate(-50%, -55%);
+	    -ms-transform: translate(-50%, -55%);
+	     -o-transform: translate(-50%, -55%);
+	        transform: translate(-50%, -55%);
 	text-align:center;
 	display: none;
 	background-color: #f6fcfb;
@@ -532,7 +532,7 @@ depend on which content
 
 #content.content_work_category .lightbox .lightboxWrapper {
 	min-width: 30rem;
-	padding: 4rem 5rem;
+	padding: 3rem 5rem;
 	width:100%;
 }
 
@@ -556,7 +556,7 @@ depend on which content
 #content.content_work_category .lightbox .lightboxWrapper div.itemText {
 	display: block;
 	padding: 0rem 0rem 0rem 1rem;
-	max-height: 15rem;
+	max-height: 13rem;
 	overflow: auto;
 }
 

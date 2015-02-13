@@ -79,9 +79,9 @@ $(document).ready(function(){
 			$DOMtext.load( itemPosition + imgFileName + ".html", function( responseLoad, statusLoad){
 				if ( statusLoad === "success" ) {
 					if ( $DOMimg[0].width > $DOMimg[0].height ) {
-						$(this).children(':first').unwrap().removeClass('twoColumn').css('display','none').fadeIn(150);  // div within div: need to unwrap
+						$(this).children(':first').unwrap().removeClass('twoColumn');  // div within div: need to unwrap
 					} else{
-						$(this).children(':first').unwrap().addClass('twoColumn').css('display','none').fadeIn(150);
+						$(this).children(':first').unwrap().addClass('twoColumn');
 					};
 				} else{
 					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.
