@@ -149,7 +149,9 @@ other_block elements
 	position:fixed; /* keeps the lightbox window in the current viewport */
 	left: 50%;
 	top:  50%;
-	transform: translate(-50%, -60%);
+	-webkit-transform: translate(-50%, -60%);
+	    -ms-transform: translate(-50%, -60%);
+	        transform: translate(-50%, -60%);
 	text-align:center;
 	display: none;
 	background-color: #f6fcfb;
