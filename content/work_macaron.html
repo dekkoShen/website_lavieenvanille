@@ -47,65 +47,89 @@
 		3. hover animation
 	-->
 	<script>
-
-		/* input information */
-		var numberCanvasMacaron = 13;                           //number of items
-		var ID_canvasMacaron = function(Xindex){                //ID for the canvas
-			return "canvas_content_work_macaron_" + Xindex ;
-		};
-
-		/* insert macaronCanvas items */
-		for(var i = 1; i <= numberCanvasMacaron; i++) {
-			$('.insertItemCanvas').append('<canvas id="' + ID_canvasMacaron(i) + '">馬卡龍_'+i+'</canvas>');
-		};
-
-		/* define CanvasSize equal to the size of last entryBox (unit: px) */
-		var sizeCanvasMacaron = Number();
 		$(document).ready(function(){
-			sizeCanvasMacaron = +$('#content .content_work_category .entryBox.last').css("height").toLocaleLowerCase().replace("px", "");
-		});
 
-		/* declare array of objects for canvas cropping image */
-		var objArrayMacaron = new Array();
-		for (var i = 1; i <= numberCanvasMacaron; i++) objArrayMacaron.push( new Object() );
+			/*-----------------------------------------------------
+			NEED TO INPUT INFORMATION OF CATEGORY
+			-----------------------------------------------------*/
+			var numberCanvas      = 13;                               //number of items
+			var itemImagePosition = "./images/work/macaron/";         //images in which fold
+			var itemNamePrefix    = "macaron_";                       //the prefix for image ex: "macaron_1.jpg"  =>  prefix: "macaron_"
 
-		/* setup canvas (ref: http://www.html5canvastutorials.com/tutorials/html5-canvas-image-crop) */
-		for (var i = 1; i <= numberCanvasMacaron; i++) {
-			objArrayMacaron[i]        = new Image();
-			objArrayMacaron[i].index  = i;
-			objArrayMacaron[i].onload = function() {
-				var tempCanvas = document.getElementById( ID_canvasMacaron(this.index) );
-				    tempCanvas.width  = sizeCanvasMacaron;
-				    tempCanvas.height = sizeCanvasMacaron;
-				/* draw cropped image */
-				var reduceRatio  = 2.5;
-				var sourceWidth  = this.width  / reduceRatio;
-				var sourceHeight = this.height / reduceRatio;
-				var sourceX = -(sourceWidth  - tempCanvas.width)/2;
-				var sourceY = -(sourceHeight - tempCanvas.height)/2;
-				tempCanvas.getContext('2d').drawImage(objArrayMacaron[this.index], sourceX, sourceY, sourceWidth, sourceHeight);
+			/* ID name for the canvas. it must be unique name in this website. */
+			var IDcanvas          = function(Xindex){                 
+				return "canvas_content_work_macaron_" + Xindex ;
 			};
-			objArrayMacaron[i].src = './images/work/macaron/macaron_' + i + '.jpg';  //filePosition and fileName
-		};
 
-
-		/* jquery for links and hover animation */
-		$(document).ready(function(){
-			/* link to index */
+			/* input the ID of last entryBox for link to index */
 			$().clickLinkContent( '#link_content_work_macaron_last', filePosition, 'work' );
+			/*---------------------------------------------------*/
 
-			/* lightbox switch for each item */
-			for (var i = 1; i <= numberCanvasMacaron; i++) {
-				$( '#' + ID_canvasMacaron(i) ).click(function(){
+
+			/*---------------------
+			insert canvas items
+			-----------------------*/
+			for(var i = 1; i <= numberCanvas; i++) {
+				$('.insertItemCanvas').append('<canvas id="' + IDcanvas(i) + '">' + itemNamePrefix + i + '</canvas>');
+			};
+
+
+			/*---------------------
+			define the size of canvas equal to the size of last entryBox (unit: px)
+			-----------------------*/
+			var sizeCanvas = Number();
+			sizeCanvas = +$('#content .content_work_category .entryBox.last').css("height").toLowerCase().replace("px", "");
+
+
+			/*---------------------
+			setup canvas (ref: http://www.html5canvastutorials.com/tutorials/html5-canvas-image-crop)
+			-----------------------*/
+			/* declare array of objects for canvas cropping image */
+			var objArrayCanvas = new Array();
+			for (var i = 1; i <= numberCanvas; i++) objArrayCanvas.push( new Object() );
+			/* start setup */
+			for (var i = 1; i <= numberCanvas; i++) {
+				objArrayCanvas[i]        = new Image();
+				objArrayCanvas[i].index  = i;
+				objArrayCanvas[i].onload = function() {
+					var tempCanvas = document.getElementById( IDcanvas(this.index) );
+					    tempCanvas.width  = sizeCanvas;
+					    tempCanvas.height = sizeCanvas;
+					/* draw cropped image */
+					var reduceRatio  = 2.5;
+					var sourceWidth  = this.width  / reduceRatio;
+					var sourceHeight = this.height / reduceRatio;
+					var sourceX = -(sourceWidth  - tempCanvas.width)/2;
+					var sourceY = -(sourceHeight - tempCanvas.height)/2;
+					tempCanvas.getContext('2d').drawImage(objArrayCanvas[this.index], sourceX, sourceY, sourceWidth, sourceHeight);
+				};
+				objArrayCanvas[i].src = itemImagePosition + itemNamePrefix + i + '.jpg';  //filePosition and fileName
+			};
+
+
+			/*---------------------
+			lightbox switch for each item
+			-----------------------*/
+			for (var i = 1; i <= numberCanvas; i++) {
+				$( '#' + IDcanvas(i) ).click(function(){
 					/* insert images for lightbox */
-					var tempFileName = this.id.replace("canvas_content_work_", "");
-					var $tempIdImg   = $('.lightbox .lightboxWrapper img.itemImg');
-					$tempIdImg[0].src="./images/work/macaron/" + tempFileName + ".jpg";
-					if ( $tempIdImg.width() > $tempIdImg.height() ) {
-						$tempIdImg.width('35rem');
+					var $imgID      = $('.lightbox .lightboxWrapper img.itemImg');   // DOMid for jquery
+					var imgFileName = itemNamePrefix + this.id.slice( this.id.lastIndexOf("_")+1, this.id.length );
+					$imgID[0].src= itemImagePosition + imgFileName + ".jpg";         // input file position
+
+					/* dynamically change image size */
+					var imgWidth    = Number();                       // image width  for lightbox
+					var imgHeight   = Number();                       // image height for lightbox
+					if ( $imgID[0].width > $imgID[0].height ) {
+						imgWidth  = 35 * fontSizePx;
+						imgHeight = imgWidth / $imgID[0].width * $imgID[0].height;
 					} else{
-						$tempIdImg.height('30rem');
+						imgHeight = 30 * fontSizePx;
+						imgWidth  = imgHeight / $imgID[0].height * $imgID[0].width;
 					};
+					$imgID.height( imgHeight );
+					$imgID.width(  imgWidth  );
+
 					/* lightbox turnOn */
 					$('.lightboxBackground, .lightbox').fadeIn(150);
 				});
@@ -115,8 +139,11 @@
 				$('.lightboxBackground, .lightbox').fadeOut(150);
 			});
 
-			/* hover animation */
-			$("#content.content_work_category.macaron canvas").hover(function(){
+
+			/*---------------------
+			hover animation
+			-----------------------*/
+			$("#content.content_work_category canvas").hover(function(){
 				$(this).stop;
 				$(this).animate({"border-radius":"2.125rem" },{duration:100,queue:false});
 				return false;
@@ -124,7 +151,7 @@
 				$(this).animate({"border-radius":"0.5rem"},{duration:100,queue:false});
 				return false;
 			});
-			$("#content.content_work_category.macaron .entryBox.last").hover(function(){
+			$("#content.content_work_category .entryBox.last").hover(function(){
 				$(this).stop;
 				$(this).animate({
 					"border-top-left-radius"   :"2.125rem",
@@ -138,6 +165,8 @@
 				},{duration:100,queue:false});
 				return false;
 			});
+
+
 		});
 	</script>
 	

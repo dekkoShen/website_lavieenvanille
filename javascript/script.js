@@ -7,7 +7,7 @@ var currentState = { fromID:"", fileName:""};   //saved information of current p
 
 var fontSizePx = Number();                      //for translate px-rem(unit: px)
 $(document).ready(function(){
-	fontSizePx = +$('html').css("font-size").toLocaleLowerCase().replace("px", "");
+	fontSizePx = +$('html').css("font-size").toLowerCase().replace("px", "");
 });
 
 /* input information of links */
