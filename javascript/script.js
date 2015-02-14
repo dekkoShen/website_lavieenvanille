@@ -165,6 +165,7 @@ $(document).ready(function(){
         "./images/contact.jpg",
         "./images/line.png",
         "./images/ico_home.png",
+        "./images/ico_cross.png",
         "./images/ico_mail.png",
         "./images/ico_facebook.png",
 

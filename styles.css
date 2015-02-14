@@ -413,16 +413,9 @@ depend on which content
 	margin: 0rem 1.5rem 1.5rem 1.5rem;
 	display: inline-block;
 	vertical-align: top;
-}
-
-#content.content_work .entryBox:hover {
 	cursor:pointer;
 }
-
-#content.content_work .entryBox:active {
-	cursor:pointer;
-}
-
+ 
 #content.content_work .entryBox img {
 	width : 17rem;
 	height: 17rem;
@@ -446,16 +439,9 @@ depend on which content
 #content.content_work_category canvas {
 	float: left;
 	margin: 0rem 0.7rem 1.4rem 0.7rem;
-}
-
-#content.content_work_category canvas:hover {
 	cursor:pointer;
 }
-
-#content.content_work_category canvas:active {
-	cursor:pointer;
-}
-
+ 
 #content.content_work_category .entryBox {
 	float: left;
 	border: 0rem;
@@ -475,13 +461,6 @@ depend on which content
 	position:relative;
 	width: 8.3rem;
 	height: 8.3rem;
-}
-
-#content.content_work_category .entryBox.last:hover {
-	cursor:pointer;
-}
-
-#content.content_work_category .entryBox.last:active {
 	cursor:pointer;
 }
 
