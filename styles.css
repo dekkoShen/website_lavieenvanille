@@ -606,12 +606,23 @@ footer layout
 ---------------------------------------------------------------------*/
 #footerHome{
 	position: fixed;
-	bottom: 2rem;
-	right: 3rem;
+	bottom: 2.5rem;
+	right: 3.5rem;
 	opacity: 0.8;
 	filter: alpha(opacity=8); /* For IE8 and earlier */
 }
 
+#footerHome #link_content_home_footerHome img{
+	width:2.5rem;
+	height: 2.5rem;
+}
+
+#footerHome #link_content_home_footerHome img:hover{
+	width:3rem;
+	height: 3rem;
+	margin-right: -0.25rem;
+	margin-bottom: -0.25rem;
+}
 
 /*---------------------------------------------------------------------
 define class

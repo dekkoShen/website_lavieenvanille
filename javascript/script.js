@@ -139,13 +139,6 @@ $(document).ready(function(){
 		};
 	});
 
-	/* hover effect */
-	$footerHome.hover(function(){
-		$footerHome.find('img').css('width','3rem');
-	},function(){
-		$footerHome.find('img').css('width','2.5rem');
-	});
-
 	/* seup function : scroll back to origin */
 	$footerHome.click(function(){
 		$('html, body').animate({scrollTop: 0},400);
