@@ -532,7 +532,7 @@ depend on which content
 
 #content.content_work_category .lightbox .lightboxWrapper {
 	min-width: 30rem;
-	padding: 3rem 5rem;
+	padding: 4rem 5rem;
 	width:100%;
 }
 
@@ -556,7 +556,7 @@ depend on which content
 #content.content_work_category .lightbox .lightboxWrapper div.itemText {
 	display: block;
 	padding: 0rem 0rem 0rem 1rem;
-	max-height: 13rem;
+	max-height: 15rem;
 	overflow: auto;
 }
 

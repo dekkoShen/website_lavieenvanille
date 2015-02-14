@@ -84,6 +84,7 @@ $(document).ready(function(){
 						$(this).children(':first').unwrap().addClass('twoColumn');
 					};
 				} else{
+					$DOMtext.removeClass('twoColumn');
 					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.
 				};
 			});
@@ -94,7 +95,11 @@ $(document).ready(function(){
 	};
 	/* lightbox turnOff */
 	$('.lightboxBackground').click(function(){
-		$('.lightboxBackground, .lightbox').fadeOut(150);
+		var $DOMtext = $('.lightbox .lightboxWrapper div.itemText');
+		$('.lightboxBackground, .lightbox').fadeOut(150, function(){
+			$DOMtext[0].innerHTML = "";
+			$DOMtext.addClass('twoColumn');
+		});
 	});
 
 
