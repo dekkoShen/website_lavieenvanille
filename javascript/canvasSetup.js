@@ -94,9 +94,10 @@ $(document).ready(function(){
 		});
 	};
 	/* lightbox turnOff */
-	$('.lightboxBackground').click(function(){
+	$('.lightboxBackground, .lightbox img.ico_cross').click(function(){
 		var $DOMtext = $('.lightbox .lightboxWrapper div.itemText');
 		$('.lightboxBackground, .lightbox').fadeOut(150, function(){
+			/* for better UX */
 			$DOMtext[0].innerHTML = "";
 			$DOMtext.addClass('twoColumn');
 		});
