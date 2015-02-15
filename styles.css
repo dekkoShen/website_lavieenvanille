@@ -502,32 +502,60 @@ depend on which content
 /*-------------------------------------------------*/
 #content.content_work_category .lightbox img.ico_cross {
 	position: absolute;
-	top: 0rem;
-	right: 0rem;
+	top: 1.6rem;
+	right: 2rem;
 	height: 1.4rem;
 	width: 1.4rem;
-	margin-top: 1.6rem;
-	margin-right: 2rem;
 	cursor:pointer;
 }
 
 #content.content_work_category .lightbox img.ico_cross:hover {
+	top: 1.45rem;
+	right: 1.85rem;
 	height: 1.7rem;
 	width: 1.7rem;
-	margin-top: 1.45rem;
-	margin-right: 1.85rem;
 }
 
+#content.content_work_category .lightbox img.ico_arrow {
+	position: absolute;
+	top:42%;
+	width:  2rem;
+	height: 4rem;
+	cursor:pointer;
+}
 
+#content.content_work_category .lightbox img.ico_arrow:hover {
+	margin-top: -0.2rem;
+	width:  2.4rem;
+	height: 4.4rem;
+}
+
+#content.content_work_category .lightbox img.ico_arrow.left{
+	left: 1.3rem;
+}
+
+#content.content_work_category .lightbox img.ico_arrow.left:hover {
+	left: 1.1rem;
+}
+
+#content.content_work_category .lightbox img.ico_arrow.right{
+	right: 1.3rem;
+}
+
+#content.content_work_category .lightbox img.ico_arrow.right:hover {
+	right: 1.1rem;
+}
+
+/*-------------------------------------------------*/
 #content.content_work_category .lightbox .lightboxWrapper {
 	min-width: 30rem;
-	padding: 4rem 5rem;
+	padding: 4rem 6rem;
 	width:100%;
 }
 
 #content.content_work_category .lightbox .lightboxWrapper.twoColumn {
-	min-width: 54rem;
-	padding: 3rem;
+	min-width: 55rem;
+	padding: 3rem 3rem;
 }
 
 #content.content_work_category .lightbox .lightboxWrapper img.itemImg {
@@ -554,7 +582,7 @@ depend on which content
 	padding: 0rem;
 	max-height: 35rem;
 	/*-------------------*/
-	margin: 2.5rem 0rem;
+	margin: 2.5rem 1rem 2.5rem 0rem;
 	vertical-align: middle;
 }
 
@@ -562,8 +590,6 @@ depend on which content
 	line-height: 1.75rem;
 	/*text-align: center;*/
 }
-
-
 
 
 /*---------------------------------------------------------------------
