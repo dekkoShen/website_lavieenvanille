@@ -42,43 +42,44 @@ $(document).ready(function(){
 
 
 	/*---------------------------
-	lightbox switch for each item
+	define function to show canvas
 	-----------------------------*/
-	for (var i = 1; i <= numberCanvas; i++) {
-		$( '#' + IDcanvas(i) ).click(function(){
+	(function ( $ ) {
+		$.fn.showCanvasItem = function(){
 
 			/* DOM targets for jquery */
 			var $DOMwrapper  = $('.lightbox .lightboxWrapper');
 			var $DOMimg      = $('.lightbox .lightboxWrapper img.itemImg');
 			var $DOMtext     = $('.lightbox .lightboxWrapper div.itemText');
 
-			/* insert image for lightbox */
-			var imgFileName  = itemNamePrefix + this.id.slice( this.id.lastIndexOf("_")+1, this.id.length );
-			$DOMimg[0].src= itemPosition + imgFileName + ".jpg";         // input file position
+			/* which item displays for lightbox */
+			var itemIndex = this[0].id.slice( this[0].id.lastIndexOf("_")+1, this[0].id.length );
+			var itemObj   = objArrayCanvas[itemIndex];        //canvas object
 
 			/* dynamically change image size and css-style */
 			var imgWidth    = Number();                       // image width  for lightbox
 			var imgHeight   = Number();                       // image height for lightbox
-			if ( $DOMimg[0].width > $DOMimg[0].height ) {
+			if ( itemObj.width > itemObj.height ) {
 				imgWidth  = 35 * fontSizePx;                                    //define image size for .oneClolumn style
-				imgHeight = imgWidth / $DOMimg[0].width * $DOMimg[0].height;
+				imgHeight = imgWidth / itemObj.width * itemObj.height;
 				$DOMimg.removeClass('twoColumn');
 				$DOMwrapper.removeClass('twoColumn');
 			} else{
 				imgHeight = 30 * fontSizePx;                                    //define image size for .twoClolumn style
-				imgWidth  = imgHeight / $DOMimg[0].height * $DOMimg[0].width;
+				imgWidth  = imgHeight / itemObj.height * itemObj.width;
 				$DOMimg.addClass('twoColumn');
 				$DOMwrapper.addClass('twoColumn');
 			};
 			$DOMimg.height( imgHeight );
 			$DOMimg.width(  imgWidth  );
+			$DOMimg[0].src = itemObj.src;         // image position
 
 			/* insert item description for lightbox and change css-style for .itemtext */
 			var responseLoad = String();    //loading content(useless here)
 			var statusLoad   = String();    // .load success or not
-			$DOMtext.load( itemPosition + imgFileName + ".html", function( responseLoad, statusLoad){
+			$DOMtext.load( itemObj.src.toLowerCase().replace("jpg","html"), function( responseLoad, statusLoad){
 				if ( statusLoad === "success" ) {
-					if ( $DOMimg[0].width > $DOMimg[0].height ) {
+					if ( itemObj.width > itemObj.height ) {
 						$(this).children(':first').unwrap().removeClass('twoColumn');  // div within div: need to unwrap
 					} else{
 						$(this).children(':first').unwrap().addClass('twoColumn');
@@ -88,7 +89,20 @@ $(document).ready(function(){
 					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.
 				};
 			});
+			
+			/*---end---*/
+			return this;
+		};
+	}( jQuery ));
 
+
+	/*---------------------------
+	lightbox switch for each item
+	-----------------------------*/
+	for (var i = 1; i <= numberCanvas; i++) {
+		$( '#' + IDcanvas(i) ).click(function(){
+			/* show this item */
+			$(this).showCanvasItem();
 			/* lightbox turnOn */
 			$('.lightboxBackground, .lightbox').fadeIn(150);
 		});
