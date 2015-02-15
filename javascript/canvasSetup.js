@@ -54,6 +54,10 @@ $(document).ready(function(){
 			var $DOMimg      = $('.lightbox .lightboxWrapper img.itemImg');
 			var $DOMtext     = $('.lightbox .lightboxWrapper div.itemText');
 
+			/* hidden prev's item then start to change for UX */
+			$DOMimg.css("display","none");
+			$DOMtext.css("display","none");
+
 			/* which item displays for lightbox */
 			currentLightboxIndex = +this[0].id.slice( this[0].id.lastIndexOf("_")+1, this[0].id.length );
 			var itemObj   = objArrayCanvas[currentLightboxIndex];        //canvas object
@@ -104,6 +108,10 @@ $(document).ready(function(){
 				$('.lightbox img.ico_arrow.right').addClass("hidden");
 			};
 
+			/* fadeIn item for UX */
+			$DOMimg.fadeIn(125);
+			$DOMtext.fadeIn(125);
+
 			/*---end---*/
 			return this;
 		};
@@ -118,13 +126,13 @@ $(document).ready(function(){
 			/* show this item */
 			$(this).showCanvasItem();
 			/* lightbox turnOn */
-			$('.lightboxBackground, .lightbox').fadeIn(150);
+			$('.lightboxBackground, .lightbox').fadeIn(125);
 		});
 	};
 	/* lightbox turnOff */
 	$('.lightboxBackground, .lightbox img.ico_cross').click(function(){
 		var $DOMtext = $('.lightbox .lightboxWrapper div.itemText');
-		$('.lightboxBackground, .lightbox').fadeOut(150, function(){
+		$('.lightboxBackground, .lightbox').fadeOut(125, function(){
 			/* for better UX */
 			$DOMtext[0].innerHTML = "";
 			$DOMtext.addClass('twoColumn');
