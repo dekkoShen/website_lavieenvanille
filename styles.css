@@ -498,56 +498,9 @@ depend on which content
 	overflow: auto;
 }
 
-
-/*-------------------------------------------------*/
-#content.content_work_category .lightbox img.ico_cross {
-	position: absolute;
-	top: 1.6rem;
-	right: 2rem;
-	height: 1.4rem;
-	width: 1.4rem;
-	cursor:pointer;
-}
-
-#content.content_work_category .lightbox img.ico_cross:hover {
-	top: 1.45rem;
-	right: 1.85rem;
-	height: 1.7rem;
-	width: 1.7rem;
-}
-
-#content.content_work_category .lightbox img.ico_arrow {
-	position: absolute;
-	top:42%;
-	width:  2rem;
-	height: 4rem;
-	cursor:pointer;
-}
-
-#content.content_work_category .lightbox img.ico_arrow:hover {
-	margin-top: -0.2rem;
-	width:  2.4rem;
-	height: 4.4rem;
-}
-
-#content.content_work_category .lightbox img.ico_arrow.left{
-	left: 1.3rem;
-}
-
-#content.content_work_category .lightbox img.ico_arrow.left:hover {
-	left: 1.1rem;
-}
-
-#content.content_work_category .lightbox img.ico_arrow.right{
-	right: 1.3rem;
-}
-
-#content.content_work_category .lightbox img.ico_arrow.right:hover {
-	right: 1.1rem;
-}
-
 /*-------------------------------------------------*/
 #content.content_work_category .lightbox .lightboxWrapper {
+	position: relative;
 	min-width: 30rem;
 	padding: 4rem 6rem;
 	width:100%;
@@ -591,6 +544,60 @@ depend on which content
 	/*text-align: center;*/
 }
 
+/*-------------------------------------------------*/
+#content.content_work_category .lightbox .lightboxWrapper img.ico_cross {
+	position: absolute;
+	top: 1.6rem;
+	right: 2rem;
+	height: 1.4rem;
+	width: 1.4rem;
+	cursor:pointer;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper img.ico_cross:hover {
+	top: 1.45rem;
+	right: 1.85rem;
+	height: 1.7rem;
+	width: 1.7rem;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper img.ico_arrow {
+	position: absolute;
+	top:42%;
+	width:  2rem;
+	height: 4rem;
+	cursor:pointer;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper img.ico_arrow:hover {
+	margin-top: -0.2rem;
+	width:  2.4rem;
+	height: 4.4rem;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper img.ico_arrow.left{
+	left: 1.3rem;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper img.ico_arrow.left:hover {
+	left: 1.1rem;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper img.ico_arrow.right{
+	right: 1.3rem;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper img.ico_arrow.right:hover {
+	right: 1.1rem;
+}
+
+#content.content_work_category .lightbox .lightboxWrapper p.itemIndex {
+	position: absolute;
+	bottom: 1.5rem;
+	right: 2rem;
+	font-family: "Reenie Beanie", Sans-serif;
+	font-size: 1.5rem;
+}
 
 /*---------------------------------------------------------------------
 footer layout

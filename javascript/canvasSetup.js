@@ -50,9 +50,9 @@ $(document).ready(function(){
 		$.fn.showCanvasItem = function(){
 
 			/* DOM targets for jquery */
-			var $DOMwrapper  = $('.lightbox .lightboxWrapper');
-			var $DOMimg      = $('.lightbox .lightboxWrapper img.itemImg');
-			var $DOMtext     = $('.lightbox .lightboxWrapper div.itemText');
+			var $DOMwrapper = $('.lightbox .lightboxWrapper');
+			var $DOMimg     = $('.lightbox .lightboxWrapper img.itemImg');
+			var $DOMtext    = $('.lightbox .lightboxWrapper div.itemText');
 
 			/* hidden prev's item then start to change for UX */
 			$DOMimg.css("display","none");
@@ -107,6 +107,9 @@ $(document).ready(function(){
 				$('.lightbox img.ico_arrow.left' ).removeClass("hidden");
 				$('.lightbox img.ico_arrow.right').addClass("hidden");
 			};
+
+			/* item index in the lightbox */
+			$(".lightbox p.itemIndex")[0].innerHTML = currentLightboxIndex + "/" + numberCanvas;
 
 			/* fadeIn item for UX */
 			$DOMimg.fadeIn(125);
