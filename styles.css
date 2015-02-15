@@ -632,6 +632,8 @@ footer layout
 /*---------------------------------------------------------------------
 define class
 ---------------------------------------------------------------------*/
+.hidden { display: none; }
+
 .font_normal { font-style: normal; }
 .font_italic { font-style: italic; }
 .font_bold   { font-weight: 700;   }

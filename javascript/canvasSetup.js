@@ -44,6 +44,8 @@ $(document).ready(function(){
 	/*---------------------------
 	define function to show canvas
 	-----------------------------*/
+	var currentLightboxIndex = Number();   //which item displays now
+
 	(function ( $ ) {
 		$.fn.showCanvasItem = function(){
 
@@ -53,8 +55,8 @@ $(document).ready(function(){
 			var $DOMtext     = $('.lightbox .lightboxWrapper div.itemText');
 
 			/* which item displays for lightbox */
-			var itemIndex = this[0].id.slice( this[0].id.lastIndexOf("_")+1, this[0].id.length );
-			var itemObj   = objArrayCanvas[itemIndex];        //canvas object
+			currentLightboxIndex = +this[0].id.slice( this[0].id.lastIndexOf("_")+1, this[0].id.length );
+			var itemObj   = objArrayCanvas[currentLightboxIndex];        //canvas object
 
 			/* dynamically change image size and css-style */
 			var imgWidth    = Number();                       // image width  for lightbox
@@ -89,7 +91,19 @@ $(document).ready(function(){
 					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.
 				};
 			});
-			
+
+			/* ico_arrow display or not */
+			if ( currentLightboxIndex===1 ) {
+				$('.lightbox img.ico_arrow.left' ).addClass("hidden");
+				$('.lightbox img.ico_arrow.right').removeClass("hidden");
+			} else if( currentLightboxIndex>1 && currentLightboxIndex<numberCanvas ) {
+				$('.lightbox img.ico_arrow.left' ).removeClass("hidden");
+				$('.lightbox img.ico_arrow.right').removeClass("hidden");
+			} else{
+				$('.lightbox img.ico_arrow.left' ).removeClass("hidden");
+				$('.lightbox img.ico_arrow.right').addClass("hidden");
+			};
+
 			/*---end---*/
 			return this;
 		};
@@ -115,6 +129,20 @@ $(document).ready(function(){
 			$DOMtext[0].innerHTML = "";
 			$DOMtext.addClass('twoColumn');
 		});
+	});
+
+
+	/*---------------------------
+	lightbox ico_arrow function: next, prev
+	-----------------------------*/
+	/* .ico_arrow.right : next */
+	$('.lightbox img.ico_arrow.right').click(function(){
+		$('#' + IDcanvas(currentLightboxIndex+1)).showCanvasItem();
+	});
+
+	/* .ico_arrow.left : prev */
+	$('.lightbox img.ico_arrow.left').click(function(){
+		$('#' + IDcanvas(currentLightboxIndex-1)).showCanvasItem();
 	});
 
 
