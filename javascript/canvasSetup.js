@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
 	/*---------------------------
-	insert canvas items
+	insert canvas items( first one is last one )
 	-----------------------------*/
-	for(var i = 1; i <= numberCanvas; i++) {
+	for(var i = numberCanvas; i >= 1; i--) {
 		$('.insertItemCanvas').append('<canvas id="' + IDcanvas(i) + '">' + itemNamePrefix + i + '</canvas>');
 	};
 
@@ -98,18 +98,18 @@ $(document).ready(function(){
 
 			/* ico_arrow display or not */
 			if ( currentLightboxIndex===1 ) {
-				$('.lightbox img.ico_arrow.left' ).addClass("hidden");
-				$('.lightbox img.ico_arrow.right').removeClass("hidden");
+				$('.lightbox img.ico_arrow.left' ).removeClass("hidden");
+				$('.lightbox img.ico_arrow.right').addClass("hidden");
 			} else if( currentLightboxIndex>1 && currentLightboxIndex<numberCanvas ) {
 				$('.lightbox img.ico_arrow.left' ).removeClass("hidden");
 				$('.lightbox img.ico_arrow.right').removeClass("hidden");
 			} else{
-				$('.lightbox img.ico_arrow.left' ).removeClass("hidden");
-				$('.lightbox img.ico_arrow.right').addClass("hidden");
+				$('.lightbox img.ico_arrow.left' ).addClass("hidden");
+				$('.lightbox img.ico_arrow.right').removeClass("hidden");
 			};
 
 			/* item index in the lightbox */
-			$(".lightbox p.itemIndex")[0].innerHTML = currentLightboxIndex + "/" + numberCanvas;
+			$(".lightbox p.itemIndex")[0].innerHTML = (numberCanvas-currentLightboxIndex+1) + "/" + numberCanvas;
 
 			/* fadeIn item for UX */
 			$DOMimg.fadeIn(125);
@@ -146,14 +146,14 @@ $(document).ready(function(){
 	/*---------------------------
 	lightbox ico_arrow function: next, prev
 	-----------------------------*/
-	/* .ico_arrow.right : next */
+	/* .ico_arrow.right : next(backward to older) */
 	$('.lightbox img.ico_arrow.right').click(function(){
-		$('#' + IDcanvas(currentLightboxIndex+1)).showCanvasItem();
+		$('#' + IDcanvas(currentLightboxIndex-1)).showCanvasItem();
 	});
 
-	/* .ico_arrow.left : prev */
+	/* .ico_arrow.left : prev(forward to last item) */
 	$('.lightbox img.ico_arrow.left').click(function(){
-		$('#' + IDcanvas(currentLightboxIndex-1)).showCanvasItem();
+		$('#' + IDcanvas(currentLightboxIndex+1)).showCanvasItem();
 	});
 
 
