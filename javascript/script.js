@@ -58,28 +58,27 @@ define jquery functions for hyperlink
 		} else{                                                //add hightlight the link with .active
 			$(XlinkID).addClass('active');
 			$(XlinkID).siblings().removeClass('active');	
-		};
+		}
 		/* push the page history */
 		if (XpushHistory) {
 			if ( XfileName===linkID[0].fileName ) {
 				history.pushState(currentState, null, "./" );             //when it link to the homepage, it doesn't change the URL.
 			} else{
 				history.pushState(currentState, null, "./#"+XfileName );   //the third element define the linking URL: it must use prefix "#" or "?". Some problem (browser reload) will occur when it doesn't have prefix...
-			};
-		};
+			}
+		}
 		return this;
-	};
+	}
 
 	/* setup click function for hyperlink */
 	$.fn.clickLinkContent = function( XlinkID, XfilePosition, XfileName ) {
 		$(XlinkID).click(function(){
-			if( currentState.fileName != XfileName) {
+			if( currentState.fileName != XfileName)
 				$().linkContent( XlinkID, XfilePosition, XfileName, true );
-			};
 			return false;
 		});
 		return this;
-	};
+	}
 
 }( jQuery ));
 
@@ -101,17 +100,17 @@ $(document).ready(function(){
 			history.replaceState(currentState, null, "./#"+currentState.fileName );             //replaceState for initialized
 			checkInitialHome = false;
 			break;
-		};
-	};
+		}
+	}
 	if ( checkInitialHome ) {
 		$().linkContent( linkID[0].idName, filePosition, linkID[0].fileName, false );
 		history.replaceState(currentState, null, "./" );      //replaceState for initialized. when it link to the homepage, it doesn't change the URL.
-	};
+	}
 
 	/* click function for navbar-hyperlink */
 	for (var i = linkID.headNav; i < linkID.headNav+linkID.numberNav; i++) {
 		$().clickLinkContent( linkID[i].idName, filePosition, linkID[i].fileName );
-	};
+	}
 
 
 	/*---------------------------------------------------------------------
@@ -127,7 +126,7 @@ $(document).ready(function(){
 	/*---------------------------------------------------------------------
 	setup function for #footerHome 
 	---------------------------------------------------------------------*/
-	var $footerHome = $(linkID[linkID.headFooterHome].idName)
+	var $footerHome = $(linkID[linkID.headFooterHome].idName);
 
 	/* scroll down and showup */
 	$footerHome.css('opacity','0.35');
@@ -136,15 +135,14 @@ $(document).ready(function(){
 			$footerHome.animate({opacity:0.9},{duration:100,queue:false});
 		} else{
 			$footerHome.animate({opacity:0.35},{duration:100,queue:false});
-		};
+		}
 	});
 
 	/* seup function : scroll back to origin */
 	$footerHome.click(function(){
 		$('html, body').animate({scrollTop: 0},400);
-		if ( $(document).scrollTop() < $('#header').height() && (currentState.fileName!==linkID[linkID.headFooterHome].fileName) ) {
+		if ( $(document).scrollTop() < $('#header').height() && (currentState.fileName!==linkID[linkID.headFooterHome].fileName) )
 			$().linkContent( linkID[linkID.headFooterHome].idName, filePosition, linkID[linkID.headFooterHome].fileName, true );
-		};
 		return false;
 	});
 
@@ -156,7 +154,7 @@ $(document).ready(function(){
 	$.preloadImages = function() {
 		for (var i = 0; i < arguments.length; i++) {
 			$("<img />").attr("src", arguments[i]);
-		};
+		}
 	};
 	/* preload images */
 	$.preloadImages(

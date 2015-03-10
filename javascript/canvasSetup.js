@@ -3,9 +3,8 @@ $(document).ready(function(){
 	/*---------------------------
 	insert canvas items( first one is last one )
 	-----------------------------*/
-	for(var i = numberCanvas; i >= 1; i--) {
+	for(var i = numberCanvas; i >= 1; i--) 
 		$('.insertItemCanvas').append('<canvas id="' + IDcanvas(i) + '">' + itemNamePrefix + i + '</canvas>');
-	};
 
 
 	/*---------------------------
@@ -20,7 +19,8 @@ $(document).ready(function(){
 	-----------------------------*/
 	/* declare array of objects for canvas cropping image */
 	var objArrayCanvas = new Array();
-	for (var i = 1; i <= numberCanvas; i++) objArrayCanvas.push( new Object() );
+	for (var i = 1; i <= numberCanvas; i++) 
+		objArrayCanvas.push( new Object() );
 	/* start setup */
 	for (var i = 1; i <= numberCanvas; i++) {
 		objArrayCanvas[i]        = new Image();
@@ -36,9 +36,9 @@ $(document).ready(function(){
 			var sourceX = -(sourceWidth  - tempCanvas.width)/2;
 			var sourceY = -(sourceHeight - tempCanvas.height)/2;
 			tempCanvas.getContext('2d').drawImage(objArrayCanvas[this.index], sourceX, sourceY, sourceWidth, sourceHeight);
-		};
+		}
 		objArrayCanvas[i].src = itemPosition + itemNamePrefix + i + '.jpg';  //filePosition and fileName
-	};
+	}
 
 
 	/*---------------------------
@@ -75,7 +75,7 @@ $(document).ready(function(){
 				imgWidth  = imgHeight / itemObj.height * itemObj.width;
 				$DOMimg.addClass('twoColumn');
 				$DOMwrapper.addClass('twoColumn');
-			};
+			}
 			$DOMimg.height( imgHeight );
 			$DOMimg.width(  imgWidth  );
 			$DOMimg[0].src = itemObj.src;         // image position
@@ -89,11 +89,11 @@ $(document).ready(function(){
 						$(this).children(':first').unwrap().removeClass('twoColumn');  // div within div: need to unwrap
 					} else{
 						$(this).children(':first').unwrap().addClass('twoColumn');
-					};
+					}
 				} else{
 					$DOMtext.removeClass('twoColumn');
 					$DOMtext[0].innerHTML = "";         // if loading error, it would be empty.
-				};
+				}
 			});
 
 			/* ico_arrow display or not */
@@ -106,7 +106,7 @@ $(document).ready(function(){
 			} else{
 				$('.lightbox img.ico_arrow.left' ).addClass("hidden");
 				$('.lightbox img.ico_arrow.right').removeClass("hidden");
-			};
+			}
 
 			/* item index in the lightbox */
 			$(".lightbox p.itemIndex")[0].innerHTML = (numberCanvas-currentLightboxIndex+1) + "/" + numberCanvas;
@@ -131,7 +131,7 @@ $(document).ready(function(){
 			/* lightbox turnOn */
 			$('.lightboxBackground, .lightbox').fadeIn(125);
 		});
-	};
+	}
 	/* lightbox turnOff */
 	$('.lightboxBackground, .lightbox img.ico_cross').click(function(){
 		var $DOMtext = $('.lightbox .lightboxWrapper div.itemText');
